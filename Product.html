@@ -1,0 +1,2539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Phoenix Plants Lifesaver | Premium Agriculture Store</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Swiper JS (for professional slider) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+            color: #1f2937;
+            overflow-x: hidden;
+        }
+
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        iframe,
+        video,
+        canvas,
+        svg {
+            max-width: 100%;
+        }
+        p,
+        a,
+        span,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        li {
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: #2c6e2f;
+            color: white;
+            font-size: 13px;
+            padding: 8px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .top-bar-left { display: flex; gap: 24px; }
+        .top-bar-left span i { margin-right: 6px; }
+        .top-bar-right { display: flex; gap: 20px; }
+        .top-bar-right a { color: white; text-decoration: none; font-weight: 500; transition: 0.2s; }
+        .top-bar-right a:hover { text-decoration: underline; }
+
+        /* Main Header */
+        .main-header {
+            background: rgba(255,255,255,0.98);
+            padding: 8px 0;
+            box-shadow: 0 12px 30px rgba(12, 74, 43, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(22, 163, 74, 0.12);
+        }
+        .header-grid {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 28px;
+            flex-wrap: nowrap;
+        }
+        .logo {
+            flex-shrink: 0;
+        }
+        .logo a {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+        }
+         .logo-img {
+            width: 152px;
+            height: 76px;
+            object-fit: cover;
+            border-radius: 6px;
+            background: #ffffff;
+            padding: 3px;
+            border: 3px solid #4ade80;
+            box-shadow: 0 10px 26px rgba(34, 197, 94, 0.12);
+        }
+        .logo h1 {
+            font-size: 27px;
+            font-weight: 800;
+            color: #0a3a2a;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            line-height: 1.2;
+            overflow-wrap: normal;
+            word-break: normal;
+        }
+        .logo span {
+            font-size: 12px;
+            color: #f97316;
+            display: block;
+            margin-top: 2px;
+            font-weight: 600;
+            line-height: 1.4;
+            overflow-wrap: normal;
+            word-break: normal;
+        }
+        .nav-menu {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            flex-wrap: nowrap;
+            align-items: center;
+            flex: 1;
+            margin-left: auto;
+        }
+        .nav-menu a {
+            color: #1f3d2d;
+            text-decoration: none;
+            padding: 14px 20px;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 16px;
+            transition: 0.28s ease;
+            white-space: nowrap;
+        }
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #ffffff;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            box-shadow: 0 14px 28px rgba(22, 163, 74, 0.2);
+        }
+        .header-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 16px;
+            justify-content: flex-end;
+        }
+        .nav-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: #1f3d2d;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 12px;
+        }
+        .nav-toggle:hover {
+            background: rgba(22, 163, 74, 0.08);
+        }
+        .nav-toggle .bar {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: currentColor;
+            margin: 5px 0;
+            border-radius: 2px;
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+        .nav-toggle.open .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .nav-toggle.open .bar:nth-child(2) { opacity: 0; }
+        .nav-toggle.open .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        
+        /* ========== PROFESSIONAL HERO SLIDER SECTION ========== */
+        .hero-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: min(1280px, calc(100% - 40px));
+            margin: 25px auto;
+            padding: 0;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            position: relative;
+        }
+        .swiper {
+            width: 100%;
+            height: 100%;
+            border-radius: 25px;
+        }
+        .swiper-slide {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            min-height: 480px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 60px;
+            transition: transform 0.4s ease;
+            text-align: center;
+        }
+        /* overlay gradient for better text readability */
+        .swiper-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(105deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.25) 60%, rgba(0,0,0,0.1) 100%);
+            z-index: 1;
+            border-radius: 28px;
+        }
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            max-width: 580px;
+            width: 100%;
+            color: white;
+            animation: fadeUp 0.8s ease-out;
+            text-align: center;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .slide-badge {
+            background: rgba(255, 193, 7, 0.95);
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #1f3d2d;
+            margin-bottom: 18px;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .slide-content h2 {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 18px;
+            font-family: 'Poppins', sans-serif;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .slide-content p {
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 28px;
+            opacity: 0.95;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+            max-width: 760px;
+        }
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #f97316;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 60px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 16px;
+            box-shadow: 0 12px 24px -8px rgba(249,115,22,0.4);
+            border: none;
+            cursor: pointer;
+            justify-content: center;
+        }
+        .hero-btn i {
+            transition: transform 0.2s;
+        }
+        .hero-btn:hover {
+            background: #ea580c;
+            transform: translateY(-3px);
+            box-shadow: 0 20px 30px -10px rgba(249,115,22,0.5);
+        }
+        .hero-btn:hover i {
+            transform: translateX(6px);
+        }
+        /* Swiper navigation & pagination styling */
+        .swiper-button-next, .swiper-button-prev {
+            color: white;
+            background: rgba(0,0,0,0.35);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            backdrop-filter: blur(8px);
+            transition: 0.2s;
+            display: none;
+        }
+        .swiper-button-next:hover, .swiper-button-prev:hover {
+            background: #16a34a;
+            color: white;
+        }
+        .swiper-pagination-bullet {
+            background: white;
+            opacity: 0.7;
+        }
+        .swiper-pagination-bullet-active {
+            background: #f97316;
+            opacity: 1;
+        }
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(35px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Category Navigation */
+        .cat-nav {
+            background: white;
+            border-top: 1px solid #edf2f7;
+            border-bottom: 1px solid #edf2f7;
+            overflow-x: auto;
+            white-space: nowrap;
+            width: min(1280px, calc(100% - 40px));
+            margin: 0 auto 16px;
+        }
+        .section-block {
+            background: white;
+            border-radius: 28px;
+            padding: 32px 28px;
+            box-shadow: 0 18px 40px rgba(22, 163, 74, 0.08);
+            margin-bottom: 24px;
+        }
+        .section-block h3 {
+            font-size: 28px;
+            color: #1f3d2d;
+            margin-bottom: 16px;
+        }
+        .section-block p {
+            color: #475569;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+        .policy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 28px;
+            margin-top: 20px;
+        }
+        #policies {
+            display: none;
+        }
+        #policies.policy-visible {
+            display: block;
+        }
+        .policy-card {
+            background: linear-gradient(180deg, #ffffff 0%, #f7fcf6 100%);
+            border-radius: 28px;
+            padding: 28px;
+            border: 1px solid #e6efe4;
+            box-shadow: 0 16px 36px rgba(15, 23, 42, 0.06);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+        .policy-card.is-active {
+            border-color: #22c55e;
+            box-shadow: 0 20px 44px rgba(34, 197, 94, 0.18);
+            transform: translateY(-4px);
+        }
+        .policy-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: #edf8ef;
+            color: #166534;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .policy-card h4 {
+            margin-bottom: 12px;
+            color: #18411f;
+            font-size: 26px;
+        }
+        .policy-card p {
+            margin-bottom: 16px;
+            color: #3d503e;
+        }
+        .policy-card ul {
+            margin: 0;
+            padding-left: 20px;
+            color: #35523a;
+            line-height: 1.8;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin-top: 20px;
+        }
+        .contact-card {
+            background: #f8faf5;
+            border-radius: 24px;
+            padding: 24px;
+            border: 1px solid #e6f2e9;
+        }
+        .contact-card h4 {
+            margin-bottom: 14px;
+            color: #18411f;
+        }
+        .contact-card p {
+            margin-bottom: 12px;
+            color: #3d503e;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+        .cat-menu {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: max-content;
+            min-width: 100%;
+            gap: 28px;
+            padding: 12px 24px;
+        }
+        .cat-menu a {
+            color: #2c3e2b;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+        .cat-menu a:hover, .cat-menu a.active { color: #2c6e2f; font-weight: 600; }
+        
+        /* Search & quick actions row */
+        .category-secondary-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 18px 20px;
+            background: white;
+            border-radius: 24px;
+            margin: 12px auto 24px;
+            max-width: 1120px;
+            box-shadow: 0 18px 40px rgba(22, 163, 74, 0.08);
+            border: 1px solid rgba(22, 163, 74, 0.1);
+            flex-wrap: wrap;
+        }
+        .search-panel { flex: 1; min-width: 260px; }
+        .search-bar {
+            display: flex;
+            border: 1px solid #e2e8f0;
+            border-radius: 48px;
+            overflow: hidden;
+            background: white;
+        }
+        .search-bar input {
+            flex: 1;
+            padding: 12px 18px;
+            border: none;
+            outline: none;
+        }
+        .search-bar button {
+            background: #2c6e2f;
+            border: none;
+            padding: 0 20px;
+            color: white;
+            cursor: pointer;
+        }
+        .quick-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .icon-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #1f3d2d;
+            text-decoration: none;
+            font-weight: 600;
+            background: #f8faf5;
+            padding: 12px 18px;
+            border-radius: 999px;
+            border: 1px solid rgba(22, 163, 74, 0.12);
+            transition: 0.25s ease;
+        }
+        .icon-link:hover { background: #16a34a; color: white; border-color: transparent; }
+
+        /* Products Layout - Sidebar + Grid */
+        .products-layout {
+            display: flex;
+            gap: 32px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+        .filters-toggle {
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid rgba(22, 163, 74, 0.14);
+            border-radius: 20px;
+            background: #ffffff;
+            color: #1f3d2d;
+            font-weight: 700;
+            font-size: 15px;
+            box-shadow: 0 16px 34px rgba(22, 163, 74, 0.08);
+            cursor: pointer;
+        }
+        .filters-toggle i {
+            transition: transform 0.25s ease;
+        }
+        .filters-toggle.open i {
+            transform: rotate(180deg);
+        }
+        .filters-sidebar {
+            width: 280px;
+            background: white;
+            border-radius: 24px;
+            padding: 24px;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid #eef2ee;
+        }
+        .filter-section {
+            margin-bottom: 28px;
+            border-bottom: 1px solid #e9efe5;
+            padding-bottom: 20px;
+        }
+        .filter-section h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #2c6e2f;
+        }
+        .filter-section label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .price-range {
+            display: flex;
+            gap: 12px;
+            margin-top: 10px;
+        }
+        .price-range input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+        }
+        .apply-filter, .clear-filter {
+            background: #2c6e2f;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 40px;
+            width: 100%;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .clear-filter { background: #f1f5f0; color: #2c6e2f; margin-top: 10px; }
+        .products-main { flex: 1; }
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 24px;
+        }
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            padding: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid #eef2ee;
+            cursor: pointer;
+            position: relative;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12);
+        }
+        .product-img {
+            background: #f3f6f0;
+            border-radius: 16px;
+            height: 340px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 52px;
+            color: #3f7843;
+            overflow: hidden;
+        }
+        .product-img img,
+        .detail-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 10px;
+            display: block;
+        }
+        .popup-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .product-title {
+            font-weight: 600;
+            margin: 12px 0 6px;
+            font-size: 15px;
+            line-height: 1.4;
+        }
+        .product-subtitle {
+            color: #64748b;
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 8px;
+            min-height: 20px;
+        }
+        .price { font-weight: 700; color: #2c6e2f; font-size: 18px; }
+        .dosage-tag {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 7px 14px;
+            border-radius: 999px;
+            background: #e8f7ec;
+            color: #1f7a35;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+            margin-top: 8px;
+        }
+        .old-price { text-decoration: line-through; color: #8e9a88; font-size: 13px; margin-left: 8px; }
+        .rating { color: #ffb300; font-size: 13px; margin-top: 6px; }
+        .product-action-btn {
+            background: #2c6e2f;
+            color: white;
+            border: none;
+            padding: 8px 0;
+            border-radius: 40px;
+            width: 100%;
+            margin-top: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .product-action-btn:hover { background: #1f5422; }
+        .product-detail-card {
+            position: fixed;
+            inset: 0;
+            z-index: 1200;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: rgba(15, 23, 42, 0.52);
+            backdrop-filter: blur(8px);
+        }
+        .product-detail-card.show {
+            display: flex;
+        }
+        .product-detail-inner {
+            width: min(1120px, 100%);
+            max-height: min(88vh, 920px);
+            overflow-y: auto;
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 26px;
+            border: 1px solid #e5eee4;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.18);
+            position: relative;
+        }
+        .product-detail-inner h2 {
+            font-size: 22px;
+            margin-bottom: 18px;
+            color: #1f3d2d;
+        }
+        .detail-close-icon {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1px solid #d6e7d4;
+            background: #f6fbf5;
+            color: #1f3d2d;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: 0.2s;
+        }
+        .detail-close-icon:hover {
+            background: #ecf7eb;
+            transform: rotate(90deg);
+        }
+        .detail-marquee-track {
+            display: block;
+        }
+        .detail-marquee-item + .detail-marquee-item {
+            display: none;
+        }
+        .detail-marquee {
+            display: block;
+            width: 100%;
+        }
+        .detail-marquee .detail-marquee-item {
+            display: inline-block;
+            vertical-align: top;
+        }
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 24px;
+            align-items: center;
+        }
+        .detail-image {
+            background: #eef7ec;
+            border-radius: 24px;
+            height: 420px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 72px;
+            color: #2c6e2f;
+            overflow: hidden;
+        }
+        .detail-copy h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+        .detail-text {
+            margin: 8px 0;
+            color: #4b5563;
+            line-height: 1.65;
+        }
+        .detail-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 14px;
+            margin: 18px 0 20px;
+        }
+        .detail-meta-item {
+            background: #f7fbf6;
+            border: 1px solid #e3efe0;
+            border-radius: 18px;
+            padding: 14px 16px;
+        }
+        .detail-meta-item span {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 6px;
+        }
+        .detail-meta-item strong {
+            color: #1f3d2d;
+            font-size: 16px;
+        }
+        .detail-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 18px;
+        }
+        .detail-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: #16a34a;
+            color: white;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.2s;
+        }
+        .detail-btn:hover { background: #15803d; }
+        .detail-btn.secondary {
+            background: #edf7ee;
+            color: #166534;
+        }
+        .detail-btn.secondary:hover {
+            background: #dcf3df;
+        }
+        .hover-popup {
+            position: fixed;
+            width: 340px;
+            max-width: calc(100vw - 24px);
+            padding: 0;
+            background: linear-gradient(145deg, rgba(12, 44, 26, 0.98), rgba(24, 95, 52, 0.96));
+            color: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 28px 70px rgba(8, 20, 12, 0.32);
+            border: 1px solid rgba(255,255,255,0.12);
+            z-index: 1000;
+            pointer-events: none;
+            opacity: 0;
+            overflow: hidden;
+            transform: translateY(14px) scale(0.98);
+            transition: opacity 0.22s ease, transform 0.22s ease;
+        }
+        .hover-popup.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        .popup-top {
+            display: grid;
+            grid-template-columns: 108px 1fr;
+            gap: 16px;
+            padding: 18px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+        }
+        .popup-image {
+            height: 108px;
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 44px;
+            color: #14532d;
+            background:
+                radial-gradient(circle at top, rgba(255,255,255,0.92), rgba(220,252,231,0.88)),
+                linear-gradient(135deg, #ecfccb, #bbf7d0);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+        }
+        .popup-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(217, 249, 157, 0.16);
+            color: #d9f99d;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+        .hover-popup h4 {
+            font-size: 18px;
+            line-height: 1.4;
+            margin: 12px 0 10px;
+            color: #ffffff;
+        }
+        .hover-popup p {
+            margin: 0;
+            line-height: 1.5;
+            font-size: 14px;
+            color: rgba(255,255,255,0.9);
+        }
+        .popup-bottom {
+            padding: 18px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            background: rgba(6, 16, 10, 0.16);
+        }
+        .popup-meta {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 14px;
+        }
+        .popup-meta div {
+            padding: 12px 14px;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .popup-label {
+            display: block;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: rgba(217,249,157,0.8);
+            margin-bottom: 6px;
+        }
+        .popup-value {
+            font-size: 15px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+        .hover-popup .popup-price {
+            color: #fde68a;
+            font-weight: 800;
+            font-size: 20px;
+            margin-top: 2px;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 40px 0;
+        }
+        .pagination button {
+            padding: 10px 16px;
+            border: 1px solid #e2e8f0;
+            background: white;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .pagination button.active, .pagination button:hover { background: #2c6e2f; color: white; border-color: #2c6e2f; }
+        .season-guide-section {
+            display: none;
+            margin: 12px 0 48px;
+        }
+        .season-guide-header {
+            background: linear-gradient(135deg, #f5fbf3, #edf8ef);
+            border: 1px solid #e1eee0;
+            border-radius: 28px;
+            padding: 28px;
+            box-shadow: 0 18px 40px rgba(22, 163, 74, 0.08);
+            margin-bottom: 24px;
+        }
+        .season-guide-header h3 {
+            font-size: 30px;
+            color: #1f3d2d;
+            margin-bottom: 10px;
+        }
+        .season-guide-header p {
+            color: #52625a;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+        .season-guide-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+        .season-guide-card {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 28px;
+            border: 1px solid #e6efe4;
+            box-shadow: 0 16px 36px rgba(15, 23, 42, 0.06);
+        }
+        .season-guide-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: #edf8ef;
+            color: #166534;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .season-guide-card h4 {
+            font-size: 26px;
+            color: #173f23;
+            margin-bottom: 12px;
+        }
+        .season-guide-card p {
+            color: #475569;
+            line-height: 1.9;
+            font-size: 15px;
+            text-align: justify;
+        }
+        .season-popup-copy {
+            display: grid;
+            gap: 18px;
+        }
+        .season-popup-copy p {
+            color: #475569;
+            line-height: 1.9;
+            font-size: 15px;
+        }
+        .footer {
+            background: #1f2e1c;
+            color: #d9e3d4;
+            margin-top: 50px;
+            padding: 40px 0 20px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 30px;
+        }
+        .footer-col h4 { color: white; margin-bottom: 15px; }
+        .footer-col a { display: block; color: #cbdcc2; text-decoration: none; margin-bottom: 8px; transition: 0.2s; }
+        .footer-col a:hover { color: #f97316; transform: translateX(5px); display: inline-block; }
+        .copyright { text-align: center; border-top: 1px solid #3c5436; padding-top: 24px; margin-top: 30px; }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+        }
+        @media (max-width: 900px) {
+            .header-grid { position: relative; }
+            .nav-toggle { display: inline-flex; }
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(255,255,255,0.98);
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+                padding: 12px 18px;
+                border-radius: 0 0 24px 24px;
+                transform: scaleY(0);
+                transform-origin: top;
+                opacity: 0;
+                visibility: hidden;
+                z-index: 90;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            }
+            .nav-menu.open {
+                transform: scaleY(1);
+                opacity: 1;
+                visibility: visible;
+            }
+            .nav-menu a {
+                width: 100%;
+                padding: 14px 18px;
+                margin: 0;
+                border-radius: 18px;
+            }
+            .nav-menu a + a {
+                margin-top: 10px;
+            }
+            .swiper-slide { padding: 30px 24px; min-height: 380px; }
+            .slide-content h2 { font-size: 32px; }
+        }
+        @media (max-width: 768px) {
+            .main-header {
+                padding: 10px 12px;
+            }
+            .header-grid {
+                align-items: center;
+            }
+            .logo {
+                width: calc(100% - 56px);
+            }
+            .logo a {
+                gap: 10px;
+                align-items: center;
+            }
+            .logo-img {
+                width: 92px;
+                height: 52px;
+            }
+            .logo h1 {
+                font-size: 18px;
+            }
+            .logo span {
+                font-size: 9px;
+            }
+            .products-layout {
+                flex-direction: column;
+                gap: 18px;
+            }
+            .filters-toggle {
+                display: inline-flex;
+            }
+            .filters-sidebar {
+                width: 100%;
+                position: static;
+                top: auto;
+                padding: 0 20px;
+                max-height: 0;
+                opacity: 0;
+                overflow: hidden;
+                border-width: 0;
+                box-shadow: none;
+                margin-top: -6px;
+                transition: max-height 0.3s ease, opacity 0.25s ease, padding 0.25s ease, border-width 0.25s ease, box-shadow 0.25s ease;
+            }
+            .filters-sidebar.open {
+                padding: 24px 20px;
+                max-height: 900px;
+                opacity: 1;
+                overflow: visible;
+                border-width: 1px;
+                box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+            }
+            .product-detail-card {
+                padding: 16px;
+            }
+            .product-detail-inner {
+                padding: 20px;
+                max-height: 90vh;
+            }
+            .detail-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+                align-items: start;
+            }
+            .detail-image {
+                height: 280px;
+            }
+            .detail-copy h3 {
+                font-size: 22px;
+                line-height: 1.2;
+                word-break: break-word;
+            }
+            .detail-btn {
+                padding: 10px 18px;
+            }
+            .season-guide-header,
+            .season-guide-card {
+                padding: 20px;
+            }
+            .season-guide-header h3 {
+                font-size: 24px;
+            }
+            .season-guide-card h4 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Main Header -->
+<div class="main-header">
+    <div class="container header-grid">
+        <div class="logo">
+            <a href="index.html">
+                <img src="logo1.jpg" class="logo-img" alt="Logo" height="80px">
+                <div>
+                    <h1>Phoenix Plants Lifesaver Pvt. Ltd.</h1>
+                    <span>शुद्धता एवं समृद्धि का प्रतीक...!</span>
+                </div>
+            </a>
+        </div>
+        <nav class="nav-menu" id="navMenu" aria-label="Primary navigation">
+            <a href="index.html#home">Home</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#mission-vision">Mission &amp; Vision</a>
+            <a href="index.html#news">News</a>
+            <a href="index.html#products">Products</a>
+            <a href="Product.html" class="active">All Categories</a>
+        </nav>
+        <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation menu" aria-controls="navMenu" aria-expanded="false">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </button>
+    </div>
+</div>
+
+<!-- ========== WOW PROFESSIONAL HERO SLIDER ========== -->
+<div class="container hero-section">
+    <div class="swiper heroSwiper">
+        <div class="swiper-wrapper">
+            <!-- Slide 1: Seeds & Farming -->
+            <div class="swiper-slide" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('https://www.icar.org.in/sites/default/files/styles/home_banner/public/2025-06/website%20cover%20new%202psd%20%283%29_0.jpg?itok=_h2u7Wj2'); background-size: cover;">
+                <div class="slide-content">
+                    <div class="slide-badge"><i class="fas fa-seedling"></i> Premium Quality Seeds</div>
+                    <h2>Grow More, Harvest More</h2>
+                    <p>High-yield hybrid seeds & disease-resistant varieties for maximum farm productivity. Trusted by 10,000+ farmers.</p>
+                    <a href="#" class="hero-btn">Explore Seeds <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <!-- Slide 2: Crop Protection & Bio Stimulants -->
+            <div class="swiper-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=1600&h=600&fit=crop'); background-size: cover;">
+                <div class="slide-content">
+                    <div class="slide-badge"><i class="fas fa-shield-alt"></i> Advanced Crop Care</div>
+                    <h2>Protect Your Yield Like Never Before</h2>
+                    <p>World-class insecticides, fungicides & organic solutions. Sustainable farming with maximum ROI.</p>
+                    <a href="#" class="hero-btn">Shop Protection <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <!-- Slide 3: Equipment & Modern Tools -->
+            <div class="swiper-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.1)), url('https://images.unsplash.com/photo-1592982537447-7440770cbfc9?w=1600&h=600&fit=crop'); background-size: cover;">
+                <div class="slide-content">
+                    <div class="slide-badge"><i class="fas fa-tractor"></i> Smart Farming Equipments</div>
+                    <h2>Power & Precision Tools</h2>
+                    <p>Brush cutters, levelers, foggers & more — efficiency meets durability. Grab exclusive discounts.</p>
+                    <a href="#" class="hero-btn">View Equipment <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <!-- Slide 4: Fertilizers & Growth Regulators -->
+            <div class="swiper-slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=1600&h=600&fit=crop'); background-size: cover;">
+                <div class="slide-content">
+                    <div class="slide-badge"><i class="fas fa-chart-line"></i> Bio-Stimulants & Nutrients</div>
+                    <h2>Unlock Plant Potential</h2>
+                    <p>Humic acid, seaweed extracts & growth regulators for bumper harvests. 100% organic options available.</p>
+                    <a href="#" class="hero-btn">Shop Nutrients <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+
+<!-- About Section -->
+<div class="container section-block" id="about">
+    <h3>About Phoenix Plants Lifesaver Private Limited</h3>
+    <p>Phoenix Plants Lifesaver is dedicated to providing premium agricultural products and trusted support to growers across India. Our product catalog includes high-quality seeds, crop protection, fertilizers, equipment, and bio-stimulants designed to maximize farmer profitability and field health.</p>
+</div>
+
+<!-- Category Navigation -->
+<div class="cat-nav">
+    <div class="cat-menu">
+        <a href="#" class="active" data-cat="all">🌱 All Products</a>
+        <a href="#" data-cat="seeds">🌾 Primary Fertilizers</a>
+        <a href="#" data-cat="equipments">🚜 Water Soluble Fertilizers</a>
+        <a href="#" data-cat="fertilizers">💧 Micro Nutrients</a>
+        <a href="#" data-cat="crop-protection">🛡️ Advance Fertilizers</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="category-secondary-row">
+        <div class="search-panel">
+            <div class="search-bar" id="searchBar">
+                <input type="text" id="searchInput" placeholder="Search products...">
+                <button id="searchBtn"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-detail-card" id="productDetail" style="display:none;"></div>
+    <div class="hover-popup" id="hoverPopup" aria-hidden="true"></div>
+
+    <div class="products-layout">
+        <!-- Sidebar Filters -->
+        <button class="filters-toggle" id="filtersToggle" type="button" aria-expanded="false" aria-controls="filtersSidebar">
+            <span><i class="fas fa-sliders-h"></i> Filters</span>
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="filters-sidebar" id="filtersSidebar">
+            <div class="filter-section"><h4>Product Categories</h4>
+                <label><input type="checkbox" value="seeds"> Primary Fertilizers</label>
+                <label><input type="checkbox" value="equipments"> Water Soluble Fertilizers</label>
+                <label><input type="checkbox" value="fertilizers"> Micro Nutrients</label>
+                <label><input type="checkbox" value="crop-protection"> Advance Fertilizers</label>
+            </div>
+            <div class="filter-section"><h4>Packing Filter</h4>
+                <div class="price-range">
+                    <select id="packingFilter" style="width: 100%; padding: 12px 16px; border: 1px solid #d7dfd2; border-radius: 14px; font-size: 15px; color: #2f4b2f; background: #fff;">
+                        <option value="all">All Packing</option>
+                    </select>
+                </div>
+                <button class="apply-filter" id="applyPackingFilter">Apply Packing</button>
+            </div>
+            <div class="filter-section"><h4>सभी फसलों की जानकारी :</h4>
+                <label><input type="radio" name="discount" value="all" checked> सभी </label>
+                <label><input type="radio" name="discount" value="rabi">रबी की फसल</label>
+                <label><input type="radio" name="discount" value="kharif">खरीफ की फसल</label>
+                <label><input type="radio" name="discount" value="zaid">जायद की फसल</label>
+            </div>
+            <button class="clear-filter" id="clearFilters">Clear All Filters</button>
+        </div>
+
+        <div class="products-main">
+            <div class="products-header">
+                <div class="product-count" id="productCount">Showing 45 products</div>
+                <select class="sort-select" id="sortSelect">
+                    <option value="default">Sort by: Featured</option>
+                    <option value="priceLow">रबी की फसल</option>
+                    <option value="priceHigh">खरीफ की फसल</option>
+                    <option value="discountHigh">जायद की फसल</option>
+                </select>
+            </div>
+            <div class="product-grid" id="productGrid"></div>
+            <div class="pagination" id="paginationControls"></div>
+        </div>
+    </div>
+</div>
+    
+<div class="container season-guide-section" id="season-guide">
+    <div class="season-guide-header">
+        <h3>सभी फसलो के लिए विस्तृत जानकारी</h3>
+        <p>All Fasal फ़िल्टर के लिए यह एक विशेष सेक्शन बनाया गया है, जहां रबी, खरीफ और जायद सीजन के अनुसार विस्तृत जानकारी दी गई है। इसमें समझाया गया है कि Phoenix Plants Lifesaver के फर्टिलाइजर्स, वॉटर सॉल्युबल उत्पाद, माइक्रो न्यूट्रिएंट्स और एडवांस फर्टिलाइजर्स को अलग-अलग फसल परिस्थितियों में कैसे उपयोग किया जा सकता है, ताकि किसान को केवल उत्पादों की सूची ही नहीं, बल्कि उनके उपयोग से जुड़ी व्यावहारिक जानकारी भी मिल सके।</p>
+    </div>
+    <div class="season-guide-grid">
+        <article class="season-guide-card" data-season="rabi">
+            <div class="season-guide-badge"><i class="fas fa-wheat-awn"></i> रबी की फसल</div>
+            <h4>रबी की फसल के लिए कुछ महत्वपूर्ण तथ्य :</h4>
+            <p>रबी की फसलें जैसे गेहूं, चना, सरसों, मटर और ठंडे मौसम की सब्जियां एक व्यवस्थित पोषक तत्व कार्यक्रम मांगती हैं, क्योंकि इन फसलों का विकास चक्र ठंडे मौसम में होता है और जड़ स्थापना से लेकर दाना भरने तक हर चरण पर संतुलित पोषण की आवश्यकता होती है। Phoenix Plants Lifesaver Pvt. Ltd. के उत्पाद इस मौसम के लिए तब सबसे अधिक उपयोगी साबित होते हैं जब उन्हें फसल की अवस्था के अनुसार योजनाबद्ध तरीके से इस्तेमाल किया जाए।</p>
+            <p>रबी सीजन की शुरुआत में खेत की तैयारी के दौरान Primary Fertilizers श्रेणी की भूमिका बहुत महत्वपूर्ण होती है। Bharat N.P.K. जैसे संतुलित पोषण वाले उत्पाद फसल को शुरुआती नाइट्रोजन, फॉस्फोरस और पोटाश का समर्थन देते हैं। यदि मिट्टी में फॉस्फोरस या सल्फर की कमी का रुझान हो, तो Mono SSP और Mono SSP+ जैसे उत्पाद मजबूत जड़ विकास और शुरुआती खेत स्थापना में मदद कर सकते हैं। जब जड़ें अच्छी बनती हैं, तो फसल ठंडे मौसम के बावजूद मिट्टी से पोषक तत्वों को अधिक प्रभावी तरीके से अवशोषित कर पाती है। रबी फसलों में यह मजबूत आधार बहुत जरूरी होता है, क्योंकि कमजोर शुरुआत का असर अंतिम टिलरिंग, शाखा विकास और उत्पादन क्षमता पर साफ दिखाई देता है।</p>
+            <p>रबी सीजन में पौधों की वृद्धि को संतुलित बनाए रखने के लिए Water Soluble Fertilizers का उपयोग भी काफी व्यावहारिक होता है। कई बार बेसल डोज देने के बाद भी फसल को कुछ विशेष अवस्थाओं पर अतिरिक्त पोषण की आवश्यकता होती है। NPK 19:19:19 और NPK 18:28:10 (Rock Phosphate) जैसे उत्पाद वनस्पतिक अवस्था में समान हरी वृद्धि और शाखा विकास को बेहतर बना सकते हैं।</p>
+            <p>यदि फसल फूल आने के करीब हो या जड़ों को मजबूत करने की आवश्यकता अधिक हो, तो NPK 12:61:00 या NPK 00:52:34 जैसे फॉस्फेट-समृद्ध उत्पादों को योजनाबद्ध स्प्रे या फर्टिगेशन कार्यक्रम में शामिल किया जा सकता है।</p>
+            <p>Bharat Potash और Phino-Potash जैसे पोटाश-आधारित उत्पाद प्रजनन अवस्था में काफी उपयोगी होते हैं, विशेष रूप से तब जब फसल को फूलों की पकड़, फली भराव या दानों की मजबूती के लिए अतिरिक्त सहायता चाहिए हो। सरसों, चना और सब्जी फसलों में पोटाश के उपयोग से तनाव सहनशीलता और उत्पादन की गुणवत्ता दोनों में सुधार हो सकता है।</p>
+            <p>किसान के लिए सबसे महत्वपूर्ण बात यह है कि उत्पाद का चयन केवल छूट या लोकप्रिय नाम के आधार पर नहीं, बल्कि फसल की अवस्था और मिट्टी की स्थिति के अनुसार किया जाए।</p>
+            
+        <article class="season-guide-card" data-season="kharif">
+            <div class="season-guide-badge"><i class="fas fa-cloud-rain"></i> खरीफ की फसल</div>
+            <h4>खरीफ की फसल के लिए आवश्यक महत्वपूर्ण तथ्य :</h4>
+            <p>खरीफ सीजन में धान, मक्का, सोयाबीन, बाजरा, कपास, मूंगफली, अरहर, मूंग और बरसात के मौसम की सब्जियों जैसी फसलें उगाई जाती हैं। इस दौरान पोषक तत्व प्रबंधन की सबसे बड़ी चुनौती यह होती है कि बारिश, जलभराव, पोषक तत्वों का बहाव और अस्थिर धूप फसल की प्रतिक्रिया को सीधे प्रभावित करते हैं। Phoenix Plants Lifesaver Pvt. Ltd. के उत्पाद खरीफ सीजन में तब सबसे अच्छे परिणाम देते हैं जब उनका उपयोग योजनाबद्ध तरीके से किया जाए।</p>
+            <p>सीजन की शुरुआत में Primary Fertilizers श्रेणी के उत्पाद भूमि तैयारी और शुरुआती फसल समर्थन के लिए काफी महत्वपूर्ण होते हैं। Bharat N.P.K. जैसे संतुलित पोषण वाले उत्पाद फसल को शुरुआती ताकत और समान विकास देने में मदद करते हैं। Mono SSP और फॉस्फोरस-सल्फर आधारित फॉर्मुलेशन उन फसलों के लिए लाभकारी हो सकते हैं जहां जड़ों की स्थापना और शुरुआती तनाव सहनशीलता बहुत महत्वपूर्ण होती है। खरीफ में मिट्टी में नमी रहती है, लेकिन पोषक तत्वों का नुकसान भी अधिक होता है, इसलिए खेत को शुरुआत से मजबूत आधार देना जरूरी होता है।</p>
+            <p>पोटाश-समृद्ध उत्पाद जैसे Bharat Potash और Phino-Potash खरीफ फसलों के लिए विशेष रूप से उपयोगी होते हैं, क्योंकि बरसात के मौसम में तने की मजबूती, गिरने से बचाव, रोग प्रतिरोधक क्षमता और प्रजनन अवस्था का समर्थन बहुत महत्वपूर्ण होता है। धान, मक्का और कपास जैसी फसलों में यदि पोटाश की आपूर्ति कमजोर हो, तो फसल में नरम वृद्धि दिखाई दे सकती है, तनाव सहनशीलता कम हो सकती है और अंतिम उत्पादन प्रभावित हो सकता है।</p>
+            <p>Water Soluble Fertilizers श्रेणी यहां सुधारात्मक और चरणबद्ध प्रबंधन के लिए उत्कृष्ट सहायता देती है। NPK 19:19:19, NPK 13:00:45, NPK 00:52:34 और NPK 20:20:20 जैसे उत्पादों को फोलियर स्प्रे या फर्टिगेशन के माध्यम से उपयोग करके किसान फसल की तत्काल आवश्यकता को पूरा कर सकता है। भारी बारिश के बाद जब बेसल उर्वरकों का प्रभाव कम लगने लगे या फसल में असमान वृद्धि दिखाई दे, तब घुलनशील ग्रेड से तेज रिकवरी मिल सकती है। वनस्पतिक अवस्था में संतुलित ग्रेड, फूल आने से पहले फॉस्फेट ग्रेड, और फलन या फली भराव के दौरान पोटाश-आधारित उत्पाद बेहतर परिणाम दे सकते हैं।</p>
+            <p>खरीफ सीजन में सूक्ष्म पोषक तत्वों की कमी और भी गंभीर हो जाती है। जिंक, बोरॉन, सल्फर और मैग्नीशियम से जुड़ी कमियां बारिश वाले खेतों में सामान्य रूप से दिखाई देती हैं। Phoenix Plants Lifesaver के Micro Nutrients जैसे Zinc Sulphate Monohydrate, Boron 14.5%, Sulphur 90%, Bentonite Sulphur, Magnesium Sulphate और Multi-Micronutrient Mixture फसल-विशिष्ट कमी को दूर करने के लिए बनाए गए हैं। धान में जिंक की भूमिका बहुत महत्वपूर्ण मानी जाती है,</p>
+            <p>सोयाबीन और दलहनी फसलों में सल्फर बीज गुणवत्ता और फसल चयापचय के लिए जरूरी होता है, जबकि बोरॉन फूल आने और फल बनने की प्रक्रिया में मदद कर सकता है। गर्मी से मानसून में बदलाव के बाद कई बार पत्तियों पर कमी के लक्षण देर से दिखाई देते हैं, लेकिन उत्पादन का नुकसान पहले ही शुरू हो चुका होता है। इसलिए सूक्ष्म पोषक तत्वों का सक्रिय प्रबंधन खरीफ फसल प्रबंधन का महत्वपूर्ण हिस्सा होना चाहिए।</p>
+            <p>Advance Fertilizers श्रेणी के उत्पाद खरीफ फसलों में तनाव प्रबंधन और फसल रिकवरी के लिए मजबूत सहायता दे सकते हैं। Samundrika, Complete Dose, Phino-Gold, Ultrador और Raiser-90 जैसे उत्पाद खेत की स्थिति के अनुसार फसल को पुनर्जीवित करने, पत्तियों की प्रतिक्रिया सुधारने, फूलों की निरंतरता बनाए रखने और पर्यावरणीय दबाव के बाद फसल को स्थिर रखने में मदद कर सकते हैं। कपास, सोयाबीन, दलहनी फसलों और सब्जियों जैसी फसलों में जब बारिश के बाद वृद्धि धीमी हो जाए या पत्तियों की सक्रियता कम हो जाए, तब ऐसे उत्पाद किसान के लिए प्रदर्शन सहायता का महत्वपूर्ण साधन बन सकते हैं।</p>
+            <p>खरीफ सीजन का व्यावहारिक सूत्र यही है कि किसान केवल एक श्रेणी पर निर्भर न रहे। Primary Fertilizers मजबूत आधार बनाएं, Water Soluble Fertilizers समय पर सुधार दें, Micro Nutrients छिपी हुई कमी को रोकें और Advance Fertilizers फसल की ताकत बनाए रखें। इसी एकीकृत तरीके से Phoenix Plants Lifesaver के उत्पाद खरीफ फसलों में मजबूती, समानता, उत्पादन स्थिरता और अंतिम गुणवत्ता को बेहतर बना सकते हैं।</p>
+        </article>
+        <article class="season-guide-card" data-season="zaid">
+            <div class="season-guide-badge"><i class="fas fa-sun"></i> जैद की फसल</div>
+            <h4>जैद की फसल के लिए कुछ महत्वपूर्ण बाते :</h4>
+            <p>जैद सीजन अपेक्षाकृत छोटा होता है, लेकिन इसका प्रबंधन बहुत संवेदनशील होता है क्योंकि इसमें अधिक तापमान, तेज वाष्पीकरण, सिंचाई पर निर्भरता और तेज फसल चक्र जैसे कारक एक साथ काम करते हैं। खीरा, ककड़ी, तरबूज, खरबूजा, मूंग, चारे की फसलें और कई अल्प-अवधि वाली गर्मियों की सब्जियों के लिए पोषण रणनीति तेज प्रतिक्रिया वाली होनी चाहिए। Phoenix Plants Lifesaver Pvt. Ltd. के उत्पाद जायद सीजन में तब सबसे अधिक प्रभावी होते हैं जब किसान को यह पता हो कि किस अवस्था में किस प्रकार के उर्वरक की आवश्यकता होती है।</p>
+            <p>Primary Fertilizers श्रेणी के उत्पाद फसल की शुरुआती स्थापना के लिए काफी उपयोगी रहते हैं। Bharat N.P.K. जैसे संतुलित उत्पाद शुरुआती पौध स्थापना और वनस्पतिक विकास के लिए अच्छे होते हैं। Mono SSP या इसी प्रकार के फॉस्फोरस-आधारित उत्पाद जड़ों के विस्तार और शुरुआती खेत पकड़ को বেহতর বনা सकते हैं। </p>
+            <p>जैद फसलों के तेज विकास चक्र को देखते हुए <b>Water Soluble Fertilizers </b>का महत्व और भी बढ़ जाता है। जब फसल को तुरंत पोषक तत्वों की आवश्यकता होती है, तब NPK 19:19:19, NPK 12:61:00, NPK 13:00:45, NPK 00:52:34, NPK 00:00:50 और NPK 20:20:20 जैसे उत्पाद तेजी से अवस्था-विशिष्ट प्रतिक्रिया दे सकते हैं। बेल वाली फसलों और गर्मियों की सब्जियों में वनस्पतिक विकास के समय संतुलित ग्रेड उपयोगी होते हैं, फूल आने से पहले फॉस्फेट ग्रेड और फल बढ़ने के दौरान पोटाश-समृद्ध ग्रेड काफी मदद करते हैं। यदि किसान फर्टिगेशन का उपयोग करता है, तो ये उत्पाद और भी अधिक प्रभावी हो सकते हैं क्योंकि पोषक तत्वों की आपूर्ति नियंत्रित हो जाती है। गर्मियों की फसलों में देरी का मतलब सीधा उत्पादन नुकसान होता है, इसलिए यहां उत्पाद का सही समय पर उपयोग बहुत महत्वपूर्ण हो जाता है। किसान को खेत के अवलोकन के आधार पर फोलियर स्प्रे और सिंचाई समर्थन की योजना बनानी चाहिए, ताकि फसल गर्मी के तनाव के बावजूद लगातार विकास दिखाए।</p>
+            <p>Micro Nutrients जायद सीजन के लिए समान रूप से आवश्यक हैं। अधिक गर्मी और सिंचाई के दबाव के संयोजन में बोरॉन, जिंक, मैग्नीशियम और सल्फर की सही उपलब्धता फूल आने, फल बनने और पत्तियों की सक्रियता के लिए महत्वपूर्ण होती है। Boron 14.5% फूलों की पकड़ और फल बनने में मदद कर सकता है, Magnesium Sulphate पत्तियों को सक्रिय और हरा बनाए रखने में उपयोगी होता है, और जिंक-आधारित उत्पाद पौधों की जैविक क्रियाओं को समर्थन दे सकते हैं। गर्मियों की सब्जियों और खरबूजा वर्ग की फसलों में यदि फूल आ रहे हों लेकिन फल कम बन रहे हों, या फल असमान रूप से विकसित हो रहे हों, तो सूक्ष्म पोषक तत्वों के समर्थन का मूल्यांकन करना जरूरी हो जाता है। सल्फर-आधारित उत्पाद गुणवत्ता सुधार और पोषक तत्व दक्षता के दृष्टिकोण से भी उपयोगी हो सकते हैं। किसान को कमी दिखाई देने का इंतजार करने के बजाय रोकथाम आधारित कार्यक्रम अपनाना चाहिए, खासकर तब जब फसल उच्च मूल्य वाली हो और बाजार का समय महत्वपूर्ण हो।</p>
+            <p>Advance Fertilizers श्रेणी जायद सीजन में फसल बूस्टर के रूप में काम कर सकती है। Samundrika, Complete Dose, Phino-Gold, Ultrador और Raiser-90 जैसे उत्पाद गर्मी के तनाव, प्रत्यारोपण झटका, धीमी रिकवरी और असमान फसल वृद्धि जैसी परिस्थितियों में सहायता दे सकते हैं। गर्मियों की फसलों की वृद्धि तेज होती है, इसलिए कोई भी तनाव जल्दी ही दिखाई देने वाले नुकसान में बदल सकता है। ऐसे में Advance Fertilizers की भूमिका फसल को पुनः सक्रिय करना, पत्तियों की प्रतिक्रिया सुधारना और फूल-फल की निरंतरता बनाए रखना होता है।</p>
+            <p>जैद सीजन के लिए सबसे अच्छी पद्धति यही है कि किसान एक एकीकृत पोषण सीढ़ी का पालन करे: बेसल समर्थन के लिए Primary Fertilizers, अवस्था सुधार के लिए Water Soluble Fertilizers, सटीक पोषण के लिए Micro Nutrients और तनाव से उबरने के लिए Advance Fertilizers। Phoenix Plants Lifesaver के उत्पादों को यदि इस प्रकार योजनाबद्ध तरीके से उपयोग किया जाए, तो जायद फसलों में तेजी, गुणवत्ता, फलों की फिनिशिंग, बाजार मूल्य और अंतिम लाभप्रदता को मजबूत समर्थन मिल सकता है।</p>
+        </article>
+    </div>
+</div>
+
+<!-- Contact Section -->
+<div class="container section-block" id="contact">
+    <h3>Contact Phoenix Plants Lifesaver</h3>
+    <div class="contact-grid">
+        <div class="contact-card">
+            <h4>Reach Us</h4>
+            <p><strong>Address:</strong> A 54, NH58, Opp. Subharti University, Ved Vyas Puri - Phase 1, Sector 1, Meerut, UP 250002</p>
+            <p><strong>Email:</strong> support@phoenixplantslifesaverpvtltd.com</p>
+            <p><strong>Phone:</strong> 1800 569 3914</p>
+        </div>
+        <div class="contact-card">
+            <h4>Working Hours</h4>
+            <p>Monday - Saturday: 9AM - 7PM</p>
+            <p>Sunday: Closed</p>
+        </div>
+    </div>
+</div>
+
+<div class="container section-block" id="policies">
+    <h3>Shipping & Return Policy</h3>
+    <p>Clear delivery and return guidelines to help customers and distributors place orders with confidence.</p>
+    <div class="policy-grid">
+        <article class="policy-card" id="shipping-policy">
+            <div class="policy-badge"><i class="fas fa-truck-fast"></i> Shipping Policy</div>
+            <h4>Fast and reliable dispatch</h4>
+            <p>Orders are usually processed within 1 to 3 working days after payment or order confirmation. Dispatch timelines can vary during peak agricultural seasons, public holidays, or for bulk distributor orders.</p>
+            <ul>
+                <li>Delivery timelines depend on product availability and delivery location.</li>
+                <li>Customers will be contacted if there is any dispatch delay for special or large-volume orders.</li>
+                <li>Please share a correct delivery address and contact number to avoid shipment issues.</li>
+                <li>Visible package damage should be reported at the time of delivery or immediately after receipt.</li>
+            </ul>
+        </article>
+        <article class="policy-card" id="return-policy">
+            <div class="policy-badge"><i class="fas fa-rotate-left"></i> Return Policy</div>
+            <h4>Support for damaged or incorrect items</h4>
+            <p>Returns are accepted only for products that arrive damaged, defective, expired, or incorrect. Return or replacement requests should be raised within 48 hours of delivery with order details and product photos.</p>
+            <ul>
+                <li>Opened, used, or improperly stored products may not be eligible for return.</li>
+                <li>Approved return cases may be resolved through replacement, credit note, or refund after verification.</li>
+                <li>Refund timelines depend on the payment mode and approval process.</li>
+                <li>For help, customers can connect through the contact information listed on this page.</li>
+            </ul>
+        </article>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container footer-grid">
+        <div class="footer-col"><h4>Phoenix Plants Lifesaver Private Limited <p>शुद्धता एवं समृद्धि का प्रतीक ...!</p></h4><a href="index.html#about">About Us</a><a href="index.html#mission-vision">Mission &amp; Vision</a><a href="#">Sustainability</a><a href="#">Careers</a></div>
+        <div class="footer-col"><h4>Quick Links</h4><a href="index.html#products">Products</a><a href="index.html#distributor">Become Distributor</a><a href="Product.html">Our Products</a><a href="#" data-policy-target="shipping-policy">Shipping Policy</a><a href="#" data-policy-target="return-policy">Returns &amp; Refund</a></div>
+        <div class="footer-col"><h4>Connect</h4><a href="#"><i class="fab fa-facebook"></i> Facebook</a><a href="#"><i class="fab fa-instagram"></i> Instagram</a><a href="#"><i class="fab fa-youtube"></i> YouTube</a><a href="#"><i class="fab fa-whatsapp"></i> WhatsApp</a></div>
+    </div>
+    <div class="copyright container">© 2019 Phoenix Plants Lifesaver Pvt. Ltd. | शुद्धता एवं समृद्धि का प्रतीक ...! | All Rights Reserved</div>
+</footer>
+
+<a href="https://wa.me/918126354387?text=Hello%20Phoenix%20Plants%20Lifesaver%20Pvt.%20Ltd.%2C%20I%20want%20to%20know%20more%20about%20your%20agriculture%20products%20and%20services" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    // Initialize professional Swiper Slider
+    const heroSwiper = new Swiper('.heroSwiper', {
+        loop: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+        },
+        effect: 'slide',
+        speed: 900,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            dynamicBullets: true,
+        },
+        grabCursor: true,
+    });
+
+    // Product Database
+    const allProducts = [
+        { id: 1, 
+        name: "Bharat N.P.K.", 
+        dosage: "Dosage : 50Kg/Acre", price: 1370, 
+        oldPrice: 1450, 
+        // discount: 64, 
+        category: "Primary Fertilizers", 
+        rating: 4.5, 
+        icon: "fas fa-bug", 
+        image: "ALL PRO/P1.png" },
+
+        { id: 2, 
+        name: "Bharat Potash", 
+        dosage: "Dosage : 50Kg/Acre", 
+        price: 699, 
+        oldPrice: 1799, 
+        // discount: 61, 
+        category: "Primary Fertilizers", 
+        rating: 4.3, 
+        icon: "fas fa-leaf", 
+        image: "ALL PRO/P2.jpg" },
+
+        { id: 3, 
+        name: "Phino-Potash", 
+        dosage: "Dosage : 50Kg/Acre", 
+        price: 329, 
+        oldPrice: 514, 
+        // discount: 36, 
+        category: "Primary Fertilizers", 
+        rating: 4.2, 
+        icon: "fas fa-leaf", 
+        image: "ALL PRO/P3.png" },
+        
+        { id: 4, 
+        name: "Mono SSP", 
+        dosage: "Dosage : 50Kg/Acre", 
+        price: 460, oldPrice: 1245, 
+        // discount: 63, 
+        category: "Primary Fertilizers", 
+        rating: 4.0, 
+        icon: "fas fa-leaf", 
+        image: "ALL PRO/P4.png" },
+        
+        { id: 5, 
+        name: "Mono SSP+", 
+        dosage: "Dosage : 50Kg/Acre", 
+        price: 799, oldPrice: 1599, 
+        // discount: 50, 
+        category: "Primary Fertilizers", 
+        rating: 4.6, 
+        icon: "fas fa-shield-alt", 
+        image: "ALL PRO/P5.jpg" },
+        
+        { id: 6, 
+        name: "Phino-Prom", 
+        dosage: "Dosage : 50Kg/Acre", 
+        price: 399, oldPrice: 605, 
+        // discount: 34, 
+        category: "Primary Fertilizers", 
+        rating: 4.1, 
+        icon: "fas fa-leaf", 
+        image: "ALL PRO/P6.png" },
+        
+        { id: 22, 
+        name: "Phino-CAL", 
+        dosage: "Dosage : 50Kg/Acre", 
+        price: 599, oldPrice: 1999, 
+        // discount: 70, 
+        category: "Primary Fertilizers", 
+        rating: 4.3, 
+        icon: "fas fa-leaf", 
+        image: "ALL PRO/p22.png" },
+             
+        { id: 7, 
+        name: "Boron 14.5%", 
+        dosage: "Dosage : ", 
+        price: 224, oldPrice: 299, 
+        // discount: 25, 
+        category: "Micro Nutrients", 
+        rating: 4.4, 
+        icon: "fas fa-apple-alt", 
+        image: "ALL PRO/P7.png" },
+        
+        { id: 8, 
+        name: "Zinc Sulphate Monohydrate", 
+        dosage: "Dosage : ", 
+        price: 172, oldPrice: 249, 
+        // discount: 31, 
+        category: "Micro Nutrients", 
+        rating: 4.2, 
+        icon: "fas fa-carrot", 
+        image: "ALL PRO/P8.png" },
+        
+        { id: 9, 
+        name: "Sulphur 90%", 
+        dosage: "Dosage : ", 
+        price: 499, oldPrice: 759, 
+        // discount: 34, 
+        category: "Micro Nutrients", 
+        rating: 4.7, 
+        icon: "fas fa-tomato", 
+        image: "ALL PRO/P9.png" },
+        
+        { id: 10, 
+        name: "Bentonite Sulphur", 
+        dosage: "Dosage : ", 
+        price: 899, oldPrice: 1599, 
+        // discount: 43, 
+        category: "Micro Nutrients", 
+        rating: 4.0, 
+        icon: "fas fa-lightbulb", 
+        image: "ALL PRO/P10.png" },
+        
+        { id: 11, 
+        name: "Magnesium Sulphate", 
+        dosage: "Dosage : ", 
+        price: 4299, oldPrice: 4725, 
+        // discount: 9, 
+        category: "Micro Nutrients", 
+        rating: 4.2, 
+        icon: "fas fa-tractor", 
+        image: "ALL PRO/P11.png" },
+        
+        { id: 12, 
+        name: "Magnesium Sulphate", 
+        dosage: "Dosage : ", 
+        price: 12499, oldPrice: 12999, 
+        // discount: 4, 
+        category: "Micro Nutrients", 
+        rating: 4.3, 
+        icon: "fas fa-cut", 
+        image: "ALL PRO/P12.png" },
+        
+        { id: 13, 
+        name: "Manganese Sulphate", 
+        dosage: "Dosage : ", 
+        price: 2499, oldPrice: 3799, 
+        // discount: 34, 
+        category: "Micro Nutrients", 
+        rating: 4.5, 
+        icon: "fas fa-powder", 
+        image: "ALL PRO/P13.png" },
+        
+        { id: 14, 
+        name: "Boron-14.5%", 
+        dosage: "Dosage : ", 
+        price: 799, oldPrice: 1230, 
+        // discount: 35, 
+        category: "Micro Nutrients", 
+        rating: 4.4, 
+        icon: "fas fa-water", 
+        image: "ALL PRO/p14.png" },
+        
+        { id: 15, 
+        name: "Multi-Micronutrient Mixture",
+         dosage: "Dosage : ", 
+         price: 399, oldPrice: 453, 
+        //  discount: 12, 
+         category: "Micro Nutrients", 
+         rating: 4.1, 
+         icon: "fas fa-spa", 
+         image: "ALL PRO/p15.png" },
+        {
+             id: 16, 
+        name: "Samundrika", 
+        dosage: "Dosage : ", 
+        price: 449, oldPrice: 724, 
+        // discount: 38, 
+        category: "Advance Fertilizers", 
+        rating: 4.6, 
+        icon: "fas fa-tree", 
+        image: "ALL PRO/P16.jpg" },
+        
+        { id: 17, 
+        name: "Complete Dose", 
+        dosage: "Dosage : ", 
+        price: 599, oldPrice: 1032, 
+        // discount: 42, 
+        category: "Advance Fertilizers", 
+        rating: 4.3, 
+        icon: "fas fa-flower", 
+        image: "ALL PRO/P17.png" },
+        
+        { id: 18, 
+        name: "Phino-Gold", 
+        dosage: "Dosage : ", 
+        price: 449, oldPrice: 499, 
+        // discount: 10, 
+        category: "Advance Fertilizers", 
+        rating: 4.0, 
+        icon: "fas fa-leaf", 
+        image: "ALL PRO/P18.png" },
+        
+        { id: 19, 
+        name: "Ultrador", 
+        dosage: "Dosage : ", 
+        price: 399, oldPrice: 1425, 
+        // discount: 72, 
+        category: "Advance Fertilizers", 
+        rating: 4.5, 
+        icon: "fas fa-cut", 
+        image: "ALL PRO/P19.png" },
+        
+        { id: 20, 
+        name: "Ultrador Liquid", 
+        dosage: "Dosage : ", 
+        packing: "100 ml / 250 ml",
+        price: 899, oldPrice: 1109, 
+        // discount: 19, 
+        category: "Advance Fertilizers", 
+        rating: 4.2, 
+        icon: "fas fa-umbrella", 
+        image: "ALL PRO/P20.png" },
+        
+        { id: 21, 
+        name: "Raiser-90", 
+        dosage: "Dosage : ", 
+        packing: "100 ml / 250 ml",
+        price: 359, oldPrice: 399, 
+        // discount: 10,
+        category: "Advance Fertilizers", 
+        rating: 4.1, 
+        icon: "fas fa-tint", 
+        image: "ALL PRO/P21.png" },
+        
+        { id: 23, 
+        name: "NPK 19:19:19", 
+        dosage: "Dosage : Foliar spray", 
+        packing: "10 Kg",
+        price: 450, oldPrice: 672, 
+        // discount: 33, 
+        category: "Water Soluble Fertilizers", 
+        rating: 4.4, 
+        icon: "fas fa-microscope", 
+        image: "ALL PRO/PN1.png" },
+        
+        { id: 24, 
+        name: "NPK 12:61:00", 
+        dosage: "Dosage : Root booster", 
+        packing: "10 Kg",
+        price: 399, oldPrice: 725, 
+        // discount: 45, 
+        category: "Water Soluble Fertilizers", 
+        rating: 4.0, 
+        icon: "fas fa-chart-simple", 
+        image: "ALL PRO/PN2.png" },
+        
+        { id: 25, 
+        name: "Mono Urea", 
+        dosage: "Dosage : ", 
+        packing: "1 Ltr",
+        price: 599, oldPrice: 1999, 
+        // discount: 70, 
+        category: "Water Soluble Fertilizers", 
+        rating: 4.3, 
+        icon: "fas fa-leaf", 
+        image: "ALL PRO/mono urea.png" },
+
+        { id: 26, 
+        name: "NPK 13:00:45", 
+        dosage: "Dosage : Flowering stage", 
+        packing: "10 Kg",
+        price: 520, oldPrice: 760, 
+        // discount: 32, 
+        category: "Water Soluble Fertilizers", 
+        rating: 4.6, 
+        icon: "fas fa-seedling", 
+        image: "ALL PRO/PN3.png" },
+        
+        { id: 27, 
+        name: "NPK 00:52:34", 
+        dosage: "Dosage : Early growth", 
+        packing: "10 Kg",
+        price: 560, oldPrice: 810, 
+        // discount: 31, 
+        category: "Water Soluble Fertilizers", 
+        rating: 4.4, 
+        icon: "fas fa-flask", 
+        image: "ALL PRO/PN4.png" },
+        
+        { id: 28, 
+        name: "NPK 00:00:50", 
+        dosage: "Dosage : Fruit maturity", 
+        packing: "10 Kg",
+        price: 610, oldPrice: 890, 
+        // discount: 31, 
+        category: "Water Soluble Fertilizers", 
+        rating: 4.3, 
+        icon: "fas fa-droplet", 
+        image: "ALL PRO/PN5.png" },
+        
+        { id: 29, 
+        name: "NPK 20:20:20", 
+        dosage: "Dosage : Balanced nutrition", 
+        packing: "25 Kg",
+        price: 470, oldPrice: 699, 
+        // discount: 33, 
+        category: "Water Soluble Fertilizers", 
+        rating: 4.5, 
+        icon: "fas fa-vial", 
+        image: "ALL PRO/PN6.png" },
+        
+        { id: 30, 
+        name: "Humic Shakti", 
+        dosage: "Dosage : Soil application", 
+        price: 349, oldPrice: 525, 
+        // discount: 34, 
+        category: "crop-protection", 
+        rating: 4.2, 
+        icon: "fas fa-mountain", 
+        image: "ALL PRO/pro1.png" },
+        
+    //     { id: 31, 
+    //     name: "Crop Booster Plus", 
+    //     dosage: "Dosage : 2 ml per litre", 
+    //     price: 299, oldPrice: 430, 
+    //     discount: 30, 
+    //     category: "crop-protection", 
+    //     rating: 4.1, 
+    //     icon: "fas fa-spray-can-sparkles", 
+    //     image: "ALL PRO/P17.png" },
+        
+    //     { id: 32, 
+    //     name: "Root Guard Bio", 
+    //     dosage: "Dosage : Seed treatment", 
+    //     price: 389, oldPrice: 549, 
+    //     discount: 29, 
+    //     category: "crop-protection", 
+    //     rating: 4.4, 
+    //     icon: "fas fa-shield-virus", 
+    //     image: "ALL PRO/P16.jpg" },
+        
+    //     { id: 33, 
+    //     name: "Green Power Mix", 
+    //     dosage: "Dosage : Drip use", 
+    //     price: 579, oldPrice: 799, 
+    //     discount: 28, 
+    //     category: "fertilizers", 
+    //     rating: 4.2, 
+    //     icon: "fas fa-leaf", 
+    //     image: "ALL PRO/P15.png" },
+        
+    //     { id: 34, 
+    //     name: "Calcium Rich", 
+    //     dosage: "Dosage : Fruit setting", 
+    //     price: 640, oldPrice: 920, 
+    //     discount: 30, 
+    //     category: "fertilizers", 
+    //     rating: 4.5, 
+    //     icon: "fas fa-apple-whole", 
+    //     image: "ALL PRO/p22.png" },
+        
+    //     { id: 35, 
+    //     name: "Sulphur Max", 
+    //     dosage: "Dosage : Granule blend", 
+    //     price: 459, oldPrice: 650, 
+    //     discount: 29, 
+    //     category: "fertilizers", 
+    //     rating: 4.3, 
+    //     icon: "fas fa-burst", 
+    //     image: "ALL PRO/P9.png" },
+        
+    //     { id: 36, 
+    //     name: "Zinc Active", 
+    //     dosage: "Dosage : 1 kg per acre", 
+    //     price: 259, oldPrice: 375, 
+    //     discount: 31, 
+    //     category: "fertilizers", 
+    //     rating: 4.4, 
+    //     icon: "fas fa-bolt", 
+    //     image: "ALL PRO/P8.png" },
+        
+    //     { id: 37, 
+    //     name: "Boron Care", 
+    //     dosage: "Dosage : Micronutrient spray", 
+    //     price: 245, oldPrice: 340, 
+    //     discount: 28, 
+    //     category: "fertilizers", 
+    //     rating: 4.1, 
+    //     icon: "fas fa-capsules", 
+    //     image: "ALL PRO/P7.png" },
+        
+    //     { id: 38, 
+    //     name: "Urea Gold", 
+    //     dosage: "Dosage : Basal dose", 
+    //     price: 699, oldPrice: 980, 
+    //     discount: 29, 
+    //     category: "seeds", 
+    //     rating: 4.6, 
+    //     icon: "fas fa-sack-dollar", 
+    //     image: "ALL PRO/mono urea.png" },
+        
+    //     { id: 39, 
+    //     name: "Potash Supreme", 
+    //     dosage: "Dosage : 25 kg pack", 
+    //     price: 749, oldPrice: 1099, 
+    //     discount: 32, 
+    //     category: "seeds", 
+    //     rating: 4.5, 
+    //     icon: "fas fa-box-open", 
+    //     image: "ALL PRO/P2.jpg" },
+        
+    //     { id: 40, 
+    //     name: "SSP Classic", 
+    //     dosage: "Dosage : Basal nutrition", 
+    //     price: 485, oldPrice: 725, 
+    //     discount: 33, 
+    //     category: "seeds", 
+    //     rating: 4.2, 
+    //     icon: "fas fa-cube", 
+    //     image: "ALL PRO/P4.png" },
+        
+    //     { id: 41, 
+    //     name: "Prom Growth", 
+    //     dosage: "Dosage : Soil enrich", 
+    //     price: 415, oldPrice: 610, 
+    //     discount: 32, 
+    //     category: "seeds", 
+    //     rating: 4.0, 
+    //     icon: "fas fa-arrow-trend-up", 
+    //     image: "ALL PRO/P6.png" },
+        
+    //     { id: 42, 
+    //     name: "NPK Starter", 
+    //     dosage: "Dosage : Nursery use", 
+    //     price: 1320, oldPrice: 1599, 
+    //     discount: 17, 
+    //     category: "seeds", rating: 4.3, 
+    //     icon: "fas fa-seedling", 
+    //     image: "ALL PRO/P1.png" },
+        
+    //     { id: 43, 
+    //     name: "Mag Sulpho Prime", 
+    //     dosage: "Dosage : Deficiency control", 
+    //     price: 4399, oldPrice: 4825, 
+    //     discount: 9, 
+    //     category: "fertilizers", rating: 4.1, 
+    //     icon: "fas fa-industry", 
+    //     image: "ALL PRO/P11.png" },
+        
+    //     { id: 44, 
+    //     name: "Mag Sulpho Pro", 
+    //     dosage: "Dosage : Bulk application", 
+    //     price: 12599, oldPrice: 13199, 
+    //     discount: 5, 
+    //     category: "fertilizers", rating: 4.2, 
+    //     icon: "fas fa-warehouse", 
+    //     image: "ALL PRO/P12.png" },
+        
+    //     { id: 45, 
+    //     name: "Manganese Active", 
+    //     dosage: "Dosage : Corrective spray", 
+    //     price: 2599, oldPrice: 3899, 
+    //     discount: 33, 
+    //     category: "fertilizers", rating: 4.5, 
+    //     icon: "fas fa-atom", 
+    //     image: "ALL PRO/P13.png" }
+        
+        
+    ];
+
+    let currentProducts = [...allProducts];
+    let selectedProductId = null;
+    let selectedSeasonKey = null;
+    let currentPage = 1;
+    const itemsPerPage = 12;
+
+    const productGrid = document.getElementById('productGrid');
+    const productCountSpan = document.getElementById('productCount');
+    const sortSelect = document.getElementById('sortSelect');
+    const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.getElementById('searchBtn');
+    const clearFiltersBtn = document.getElementById('clearFilters');
+    const applyPackingBtn = document.getElementById('applyPackingFilter');
+    const packingFilter = document.getElementById('packingFilter');
+    const filtersToggle = document.getElementById('filtersToggle');
+    const filtersSidebar = document.getElementById('filtersSidebar');
+    const categoryCheckboxes = document.querySelectorAll('.filter-section input[type="checkbox"]');
+    const discountRadios = document.querySelectorAll('input[name="discount"]');
+    const catNavLinks = document.querySelectorAll('.cat-menu a');
+    const seasonGuideCards = document.querySelectorAll('.season-guide-card');
+    const hoverPopup = document.getElementById('hoverPopup');
+    let hoverPopupTimer = null;
+    let lastHoverEvent = null;
+    const seasonGuideContent = Array.from(seasonGuideCards).reduce((guides, card) => {
+        const seasonKey = card.dataset.season;
+        if (seasonKey) {
+            guides[seasonKey] = card;
+        }
+        return guides;
+    }, {});
+
+    function isMobileFiltersView() {
+        return window.innerWidth <= 768;
+    }
+
+    function setFiltersOpen(isOpen) {
+        if (!filtersToggle || !filtersSidebar) return;
+        filtersToggle.classList.toggle('open', isOpen);
+        filtersSidebar.classList.toggle('open', isOpen);
+        filtersToggle.setAttribute('aria-expanded', String(isOpen));
+    }
+
+    function syncFiltersDropdown() {
+        if (!filtersToggle || !filtersSidebar) return;
+        if (isMobileFiltersView()) {
+            if (!filtersSidebar.classList.contains('open')) {
+                setFiltersOpen(false);
+            }
+        } else {
+            setFiltersOpen(true);
+        }
+    }
+
+    function getPointerPosition(event) {
+        return {
+            clientX: event.clientX,
+            clientY: event.clientY
+        };
+    }
+
+    const categoryLabels = {
+        seeds: 'Primary Fertilizers',
+        equipments: 'Water Soluble Fertilizers',
+        fertilizers: 'Micro Nutrients',
+        'crop-protection': 'Advance Fertilizers'
+    };
+
+    const categoryAliases = {
+        'Primary Fertilizers': 'seeds',
+        'Water Soluble Fertilizers': 'equipments',
+        'Micro Nutrients': 'fertilizers',
+        'Advance Fertilizers': 'crop-protection'
+    };
+
+    function normalizeCategoryValue(category) {
+        return categoryAliases[category] || category;
+    }
+
+    function getCategoryLabel(category) {
+        const normalizedCategory = normalizeCategoryValue(category);
+        return categoryLabels[normalizedCategory] || category;
+    }
+
+    function getProductDiscount(product) {
+        if (Number.isFinite(product.discount)) return product.discount;
+        const price = Number(product.price);
+        const oldPrice = Number(product.oldPrice);
+        if (oldPrice > price && oldPrice > 0) {
+            return Math.round(((oldPrice - price) / oldPrice) * 100);
+        }
+        return 0;
+    }
+
+    function getProductSubName(product) {
+        if (product.subName) return product.subName;
+
+        const dosageText = (product.dosage || '').replace(/^Dosage\s*:\s*/i, '').trim();
+        if (dosageText) return dosageText;
+
+        return getCategoryLabel(product.category) || 'Agriculture product';
+    }
+
+    function getProductTechnicalName(product) {
+        return (product.technicalName || product.name || 'Technical details on request').trim();
+    }
+
+    function getProductPacking(product) {
+        if (product.packing) return product.packing.trim();
+
+        const dosageText = (product.dosage || '').replace(/^Dosage\s*:\s*/i, '').trim();
+        if (dosageText) return dosageText;
+
+        return 'Packing available on request';
+    }
+
+    function normalizePackingValue(packing) {
+        return (packing || '').toLowerCase().replace(/\s+/g, ' ').trim();
+    }
+
+    function populatePackingFilterOptions() {
+        if (!packingFilter) return;
+
+        const packingOptions = Array.from(
+            new Set(
+                allProducts
+                    .map(product => getProductPacking(product))
+                    .filter(Boolean)
+            )
+        ).sort((a, b) => a.localeCompare(b));
+
+        packingFilter.innerHTML = `
+            <option value="all">All Packing</option>
+            ${packingOptions.map(option => `<option value="${normalizePackingValue(option)}">${option}</option>`).join('')}
+        `;
+    }
+
+    function renderProductMedia(product, className) {
+        if (product.image) {
+            return `<img src="${product.image}" alt="${product.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="${product.icon}" style="display:none;"></i>`;
+        }
+        return `<i class="${product.icon}"></i>`;
+    }
+
+    function getDisplayDosage(label = 'Custom dosage') {
+        const cleanedLabel = (label || '').trim();
+        return cleanedLabel && cleanedLabel !== 'Dosage :' ? cleanedLabel : 'Custom dosage';
+    }
+
+    function renderDosageTag(label = 'Custom dosage') {
+        return `<span class="dosage-tag">${getDisplayDosage(label)}</span>`;
+    }
+
+    function resetSeasonFilterSelection() {
+        const allSeasonRadio = document.querySelector('input[name="discount"][value="all"]');
+        if (allSeasonRadio) {
+            allSeasonRadio.checked = true;
+        }
+    }
+
+    function attachDetailCloseHandlers() {
+        const closeIcon = document.getElementById('detailCloseIcon');
+        const closeBtn = document.getElementById('closeProductDetail');
+
+        if (closeIcon) {
+            closeIcon.addEventListener('click', closeProductDetails);
+        }
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeProductDetails);
+        }
+    }
+
+    function openProductDetails(productId) {
+        selectedProductId = Number(productId) || null;
+        selectedSeasonKey = null;
+        resetSeasonFilterSelection();
+        renderSelectedProduct();
+        const detailContainer = document.getElementById('productDetail');
+        if (detailContainer) {
+            detailContainer.classList.add('show');
+            detailContainer.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function openSeasonGuide(seasonKey) {
+        if (!seasonGuideContent[seasonKey]) return;
+        selectedProductId = null;
+        selectedSeasonKey = seasonKey;
+        renderSelectedProduct();
+        const detailContainer = document.getElementById('productDetail');
+        if (detailContainer) {
+            detailContainer.classList.add('show');
+            detailContainer.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function closeProductDetails() {
+        const hadSeasonPopupOpen = Boolean(selectedSeasonKey);
+        selectedProductId = null;
+        selectedSeasonKey = null;
+        if (hadSeasonPopupOpen) {
+            resetSeasonFilterSelection();
+        }
+        const detailContainer = document.getElementById('productDetail');
+        if (!detailContainer) return;
+        detailContainer.classList.remove('show');
+        detailContainer.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+
+    function showSmartHoverPopup(product, event) {
+        if (!hoverPopup) return;
+        hoverPopup.innerHTML = `
+            <div class="popup-top">
+                <div class="popup-image">${renderProductMedia(product, 'popup-image')}</div>
+                <div>
+                    <span class="popup-badge"><i class="fas fa-clock"></i> Preview</span>
+                    <h4>${product.name}</h4>
+                    <p class="product-subtitle">${getProductSubName(product)}</p>
+                    <p class="popup-price">${renderDosageTag(product.dosage)}</p>
+                </div>
+            </div>
+            <div class="popup-bottom">
+                <p>Premium product details ready after 3 seconds of hover.</p>
+                <div class="popup-meta">
+                    <div>
+                        <span class="popup-label">Category</span>
+                        <span class="popup-value">${getCategoryLabel(product.category)}</span>
+                    </div>
+                    <div>
+                        <span class="popup-label">Rating</span>
+                        <span class="popup-value">${product.rating} â˜…</span>
+                    </div>
+                    <div>
+                        <span class="popup-label">Info</span>
+                        <span class="popup-value">${getDisplayDosage(product.dosage)}</span>
+                    </div>
+                </div>
+            </div>
+        `;
+        hoverPopup.classList.add('show');
+        hoverPopup.setAttribute('aria-hidden', 'false');
+        positionHoverPopup(event);
+    }
+
+    function showStyledHoverPopup(product, event) {
+        if (!hoverPopup) return;
+        hoverPopup.innerHTML = `
+            <div class="popup-top">
+                <div class="popup-image">${renderProductMedia(product, 'popup-image')}</div>
+                <div>
+                    <span class="popup-badge"><i class="fas fa-clock"></i> Preview</span>
+                    <h4>${product.name}</h4>
+                    <p class="product-subtitle">${getProductSubName(product)}</p>
+                    <p class="popup-price">${renderDosageTag(product.dosage)}</p>
+                </div>
+            </div>
+            <div class="popup-bottom">
+                <p>Premium product details ready after 3 seconds of hover.</p>
+                <div class="popup-meta">
+                    <div>
+                        <span class="popup-label">Category</span>
+                        <span class="popup-value">${getCategoryLabel(product.category)}</span>
+                    </div>
+                    <div>
+                        <span class="popup-label">Rating</span>
+                        <span class="popup-value">${product.rating} &#9733;</span>
+                    </div>
+                    <div>
+                        <span class="popup-label">Info</span>
+                        <span class="popup-value">${getDisplayDosage(product.dosage)}</span>
+                    </div>
+                </div>
+            </div>
+        `;
+        hoverPopup.classList.add('show');
+        hoverPopup.setAttribute('aria-hidden', 'false');
+        positionHoverPopup(event);
+    }
+
+    function scheduleHoverPopup(product, event) {
+        if (hoverPopupTimer) {
+            clearTimeout(hoverPopupTimer);
+        }
+        lastHoverEvent = getPointerPosition(event);
+        hoverPopupTimer = setTimeout(() => {
+            showStyledHoverPopup(product, lastHoverEvent || event);
+            hoverPopupTimer = null;
+        }, 3000);
+    }
+
+    function positionHoverPopup(event) {
+        if (!hoverPopup || !event) return;
+        lastHoverEvent = getPointerPosition(event);
+        const offset = 18;
+        const popupRect = hoverPopup.getBoundingClientRect();
+        let left = event.clientX + offset;
+        let top = event.clientY + offset;
+
+        if (left + popupRect.width > window.innerWidth - 12) {
+            left = event.clientX - popupRect.width - offset;
+        }
+        if (top + popupRect.height > window.innerHeight - 12) {
+            top = event.clientY - popupRect.height - offset;
+        }
+
+        hoverPopup.style.left = `${Math.max(12, left)}px`;
+        hoverPopup.style.top = `${Math.max(12, top)}px`;
+    }
+
+    function showHoverPopup(product, event) {
+        if (!hoverPopup) return;
+        hoverPopup.innerHTML = `
+            <h4>${product.name}</h4>
+            <p class="product-subtitle">${getProductSubName(product)}</p>
+            <p class="popup-price">${renderDosageTag(product.dosage)}</p>
+            <p>Category: ${getCategoryLabel(product.category)}</p>
+            <p>Rating: ${product.rating} ★</p>
+        `;
+        hoverPopup.classList.add('show');
+        hoverPopup.setAttribute('aria-hidden', 'false');
+        positionHoverPopup(event);
+    }
+
+    function hideHoverPopup() {
+        if (hoverPopupTimer) {
+            clearTimeout(hoverPopupTimer);
+            hoverPopupTimer = null;
+        }
+        if (!hoverPopup) return;
+        hoverPopup.classList.remove('show');
+        hoverPopup.setAttribute('aria-hidden', 'true');
+    }
+
+    function renderProducts() {
+        let filtered = [...currentProducts];
+        const searchTerm = searchInput.value.toLowerCase();
+        if (searchTerm) filtered = filtered.filter(p => p.name.toLowerCase().includes(searchTerm));
+        const activeCategories = Array.from(categoryCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+        if (activeCategories.length > 0) filtered = filtered.filter(p => activeCategories.includes(normalizeCategoryValue(p.category)));
+        const selectedPacking = packingFilter ? packingFilter.value : 'all';
+        if (selectedPacking !== 'all') {
+            filtered = filtered.filter(product => normalizePackingValue(getProductPacking(product)) === selectedPacking);
+        }
+        const sortValue = sortSelect.value;
+        if (sortValue === 'priceLow') filtered.sort((a,b) => a.price - b.price);
+        if (sortValue === 'priceHigh') filtered.sort((a,b) => b.price - a.price);
+        if (sortValue === 'discountHigh') filtered.sort((a,b) => getProductDiscount(b) - getProductDiscount(a));
+        productCountSpan.innerText = `Showing ${filtered.length} products`;
+        const totalPages = Math.ceil(filtered.length / itemsPerPage);
+        const start = (currentPage - 1) * itemsPerPage;
+        const paginatedItems = filtered.slice(start, start + itemsPerPage);
+        productGrid.innerHTML = paginatedItems.map(product => `
+            <div class="product-card" data-id="${product.id}">
+                <div class="product-img">${renderProductMedia(product, 'product-img')}</div>
+                <div class="product-title">${product.name}</div>
+                <div class="product-subtitle">${getProductSubName(product)}</div>
+                <div>${renderDosageTag(product.dosage)}</div>
+                <div class="rating">${'⭐'.repeat(Math.floor(product.rating))} ${product.rating}</div>
+                <button class="product-action-btn see-more-btn" type="button" data-id="${product.id}"><i class="fas fa-circle-info"></i> See More</button>
+            </div>
+        `).join('');
+        let paginationHtml = '';
+        for (let i = 1; i <= Math.min(totalPages, 5); i++) paginationHtml += `<button class="${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+        if (totalPages > 5) paginationHtml += `<span>...</span><button data-page="${totalPages}">${totalPages}</button>`;
+        document.getElementById('paginationControls').innerHTML = paginationHtml;
+        document.querySelectorAll('#paginationControls button').forEach(btn => btn.addEventListener('click', () => { currentPage = parseInt(btn.dataset.page); renderProducts(); window.scrollTo({ top: 600, behavior: 'smooth' }); }));
+        document.querySelectorAll('.see-more-btn').forEach(btn => btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            hideHoverPopup();
+            openProductDetails(btn.dataset.id);
+        }));
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('click', hideHoverPopup);
+        });
+    }
+
+    function renderSelectedProduct() {
+        const params = new URLSearchParams(window.location.search);
+        const selectedId = selectedSeasonKey ? null : (selectedProductId || parseInt(params.get('product')));
+        const detailContainer = document.getElementById('productDetail');
+        if (!detailContainer) return;
+        if (!selectedSeasonKey && !selectedId) {
+            detailContainer.classList.remove('show');
+            detailContainer.style.display = 'none';
+            document.body.style.overflow = '';
+            return;
+        }
+        if (selectedSeasonKey) {
+            const selectedSeasonCard = seasonGuideContent[selectedSeasonKey];
+            if (!selectedSeasonCard) {
+                closeProductDetails();
+                return;
+            }
+
+            const seasonBadge = selectedSeasonCard.querySelector('.season-guide-badge')?.innerHTML || selectedSeasonKey;
+            const seasonHeading = selectedSeasonCard.querySelector('h4')?.textContent || 'Season guide';
+            const seasonParagraphs = Array.from(selectedSeasonCard.querySelectorAll('p'))
+                .map(paragraph => `<p>${paragraph.innerHTML}</p>`)
+                .join('');
+
+            detailContainer.style.display = 'flex';
+            detailContainer.classList.add('show');
+            detailContainer.innerHTML = `
+                <div class="product-detail-inner">
+                    <button type="button" class="detail-close-icon" id="detailCloseIcon" aria-label="Close details">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <h2>Fasal Details</h2>
+                    <div class="season-guide-card">
+                        <div class="season-guide-badge">${seasonBadge}</div>
+                        <h4>${seasonHeading}</h4>
+                        <div class="season-popup-copy">${seasonParagraphs}</div>
+                        <div class="detail-actions">
+                            <button type="button" class="detail-btn secondary" id="closeProductDetail">Close Details</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.style.overflow = 'hidden';
+            attachDetailCloseHandlers();
+            return;
+        }
+
+        const selectedProduct = allProducts.find(p => p.id === selectedId);
+        if (!selectedProduct) {
+            detailContainer.style.display = 'flex';
+            detailContainer.innerHTML = `
+                <div class="product-detail-inner">
+                    <h2>Product not found</h2>
+                    <p>The selected product does not exist. Browse all products below.</p>
+                    <a href="Product.html" class="detail-btn">View All Products</a>
+                </div>
+            `;
+            return;
+        }
+        detailContainer.style.display = 'flex';
+        detailContainer.classList.add('show');
+        detailContainer.innerHTML = `
+            <div class="product-detail-inner">
+                <button type="button" class="detail-close-icon" id="detailCloseIcon" aria-label="Close details">
+                    <i class="fas fa-times"></i>
+                </button>
+                <h2>Full Product Details</h2>
+                <div class="detail-grid">
+                    <div class="detail-image">${renderProductMedia(selectedProduct, 'detail-image')}</div>
+                    <div class="detail-copy">
+                        <h3>${selectedProduct.name}</h3>
+                        <p class="product-subtitle">${getProductSubName(selectedProduct)}</p>
+                        <p class="detail-price">${renderDosageTag(selectedProduct.dosage)}</p>
+                        <p class="detail-text">Phoenix Plants Lifesaver ka yeh product category-specific farming support ke liye design kiya gaya hai. Neeche iski key details di gayi hain.</p>
+                        <div class="detail-meta-grid">
+                            <div class="detail-meta-item">
+                                <span>Category</span>
+                                <strong>${getCategoryLabel(selectedProduct.category)}</strong>
+                            </div>
+                            <div class="detail-meta-item">
+                                <span>Sub Name</span>
+                                <strong>${getProductSubName(selectedProduct)}</strong>
+                            </div>
+                            <div class="detail-meta-item">
+                                <span>Technical Name</span>
+                                <strong>${getProductTechnicalName(selectedProduct)}</strong>
+                            </div>
+                            <div class="detail-meta-item">
+                                <span>Rating</span>
+                                <strong>${selectedProduct.rating} ⭐</strong>
+                            </div>
+                            <div class="detail-meta-item">
+                                <span>Packing</span>
+                                <strong>${getProductPacking(selectedProduct)}</strong>
+                            </div>
+                        </div>
+                        <div class="detail-actions">
+                            <a href="Product.html" class="detail-btn">View all products</a>
+                            <button type="button" class="detail-btn secondary" id="closeProductDetail">Close Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.style.overflow = 'hidden';
+        attachDetailCloseHandlers();
+    }
+
+    function applyInitialCategoryFilter() {
+        const params = new URLSearchParams(window.location.search);
+        const requestedCategory = params.get('category');
+        if (!requestedCategory) return;
+
+        const normalizedCategory = normalizeCategoryValue(requestedCategory);
+        const matchingCheckbox = Array.from(categoryCheckboxes).find(cb => cb.value === normalizedCategory);
+        const matchingNavLink = Array.from(catNavLinks).find(link => link.dataset.cat === normalizedCategory);
+
+        if (!matchingCheckbox || !matchingNavLink) return;
+
+        categoryCheckboxes.forEach(cb => cb.checked = false);
+        catNavLinks.forEach(link => link.classList.remove('active'));
+
+        matchingCheckbox.checked = true;
+        matchingNavLink.classList.add('active');
+        currentPage = 1;
+    }
+
+    function enhanceSelectedProductMarquee() {
+        return;
+    }
+    
+    catNavLinks.forEach(link => link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const catValue = link.dataset.cat;
+        catNavLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        categoryCheckboxes.forEach(cb => cb.checked = false);
+        if (catValue !== 'all') { const target = Array.from(categoryCheckboxes).find(cb => cb.value === catValue); if(target) target.checked = true; }
+        currentPage = 1; renderProducts();
+    }));
+    searchBtn.addEventListener('click', () => { currentPage = 1; renderProducts(); });
+    searchInput.addEventListener('keyup', (e) => { if(e.key === 'Enter') { currentPage = 1; renderProducts(); } });
+    sortSelect.addEventListener('change', () => { currentPage = 1; renderProducts(); });
+    applyPackingBtn.addEventListener('click', () => {
+        currentPage = 1;
+        renderProducts();
+        if (isMobileFiltersView()) setFiltersOpen(false);
+    });
+    clearFiltersBtn.addEventListener('click', () => {
+        categoryCheckboxes.forEach(cb => cb.checked = false);
+        if (packingFilter) packingFilter.value = 'all';
+        document.querySelector('input[name="discount"][value="all"]').checked = true;
+        closeProductDetails();
+        searchInput.value = ''; currentPage = 1; renderProducts();
+        catNavLinks.forEach(l => l.classList.remove('active'));
+        document.querySelector('.cat-menu a[data-cat="all"]').classList.add('active');
+        if (isMobileFiltersView()) setFiltersOpen(false);
+    });
+    categoryCheckboxes.forEach(cb => cb.addEventListener('change', () => { currentPage = 1; renderProducts(); }));
+    discountRadios.forEach(radio => radio.addEventListener('change', () => {
+        if (radio.value === 'all') {
+            closeProductDetails();
+        } else if (radio.checked) {
+            openSeasonGuide(radio.value);
+            if (isMobileFiltersView()) setFiltersOpen(false);
+        }
+    }));
+    const productDetailModal = document.getElementById('productDetail');
+    if (productDetailModal) {
+        productDetailModal.addEventListener('click', (event) => {
+            if (event.target === productDetailModal) {
+                closeProductDetails();
+            }
+        });
+    }
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            closeProductDetails();
+        }
+    });
+    populatePackingFilterOptions();
+    applyInitialCategoryFilter();
+    renderProducts();
+    renderSelectedProduct();
+    enhanceSelectedProductMarquee();
+    syncFiltersDropdown();
+    window.addEventListener('resize', () => {
+        syncFiltersDropdown();
+        renderSelectedProduct();
+        enhanceSelectedProductMarquee();
+    });
+    if (filtersToggle) {
+        filtersToggle.addEventListener('click', () => {
+            setFiltersOpen(!filtersSidebar.classList.contains('open'));
+        });
+    }
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+        navToggle.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', navMenu.classList.contains('open') ? 'true' : 'false');
+    });
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (navMenu.classList.contains('open')) {
+                navMenu.classList.remove('open');
+                navToggle.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    });
+    const policiesSection = document.getElementById('policies');
+    const policyCards = document.querySelectorAll('#policies .policy-card');
+    const policyTriggers = document.querySelectorAll('[data-policy-target]');
+    function showPolicyCard(targetId) {
+        if (!policiesSection) return;
+        policiesSection.classList.add('policy-visible');
+        policyCards.forEach(card => {
+            card.classList.toggle('is-active', card.id === targetId);
+        });
+        const activeCard = document.getElementById(targetId);
+        if (activeCard) {
+            setTimeout(() => {
+                activeCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 120);
+        }
+    }
+    policyTriggers.forEach(trigger => {
+        trigger.addEventListener('click', event => {
+            event.preventDefault();
+            showPolicyCard(trigger.dataset.policyTarget);
+        });
+    });</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: dharohar-web
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    disk:
+      name: dharohar-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: DATABASE_PATH
+        value: /var/data/phoenix_plants.db

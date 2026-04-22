@@ -1,0 +1,559 @@
+<!-- public/admin.html - Simple admin dashboard -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Phoenix Plants Lifesaver</title>
+    <script src="api-config.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0fdf4;
+            padding: 20px;
+        }
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #0a3a2a;
+            margin-bottom: 30px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        .stat-card h3 {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 10px;
+        }
+        .stat-card .number {
+            font-size: 36px;
+            font-weight: 800;
+            color: #16a34a;
+        }
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        .section h2 {
+            color: #0a3a2a;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        th {
+            background: #f9fafb;
+            font-weight: 600;
+        }
+        .status-pending {
+            background: #fef3c7;
+            color: #d97706;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            display: inline-block;
+        }
+        .admin-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .admin-nav a {
+            color: #166534;
+            background: #d1fae5;
+            padding: 10px 18px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s ease;
+        }
+        .admin-nav a:hover {
+            background: #a7f3d0;
+        }
+        .refresh-btn {
+            background: #16a34a;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .refresh-btn:hover {
+            background: #15803d;
+        }
+        .product-hover-trigger {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: #ecfdf5;
+            color: #166534;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+        .product-hover-trigger:hover {
+            background: #d1fae5;
+            transform: translateY(-1px);
+        }
+        .product-popup {
+            position: fixed;
+            width: 360px;
+            max-width: calc(100vw - 24px);
+            background: linear-gradient(145deg, #0b3d2e, #166534);
+            color: #fff;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.14);
+            box-shadow: 0 30px 70px rgba(0,0,0,0.28);
+            opacity: 0;
+            transform: translateY(12px) scale(0.98);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        .product-popup.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        .product-popup-top {
+            display: grid;
+            grid-template-columns: 110px 1fr;
+            gap: 16px;
+            padding: 18px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.03));
+        }
+        .product-popup-image {
+            width: 110px;
+            height: 110px;
+            border-radius: 22px;
+            background: #f0fdf4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .product-popup-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .product-popup-fallback {
+            font-size: 38px;
+        }
+        .product-popup-badge {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.12);
+            color: #d1fae5;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .product-popup-title {
+            font-size: 18px;
+            font-weight: 800;
+            line-height: 1.35;
+            margin: 10px 0 8px;
+        }
+        .product-popup-price {
+            font-size: 22px;
+            font-weight: 800;
+            color: #fde68a;
+        }
+        .product-popup-old-price {
+            font-size: 13px;
+            color: rgba(255,255,255,0.72);
+            text-decoration: line-through;
+            margin-left: 8px;
+        }
+        .product-popup-body {
+            padding: 18px;
+        }
+        .product-popup-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .product-popup-stat {
+            padding: 12px;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.08);
+        }
+        .product-popup-label {
+            display: block;
+            font-size: 11px;
+            color: #bbf7d0;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 6px;
+        }
+        .product-popup-value {
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+        .product-popup-description {
+            font-size: 14px;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.9);
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>🌾 Phoenix Plants Admin Dashboard</h1>
+        <div class="admin-nav">
+            <a href="index.html">Home</a>
+            <a href="Product.html">Products</a>
+            <a href="Catalogue 2026.pdf" download="Phoenix_Plants_Catalogue_2026.pdf">Download Brochure</a>
+        </div>
+        
+        <div class="stats-grid" id="statsGrid">
+            <div class="stat-card"><h3>Total Distributors</h3><div class="number" id="statDistributors">-</div></div>
+            <div class="stat-card"><h3>Pending Feedback</h3><div class="number" id="statPendingFeedback">-</div></div>
+            <div class="stat-card"><h3>Total Orders</h3><div class="number" id="statOrders">-</div></div>
+            <div class="stat-card"><h3>Newsletter Subs</h3><div class="number" id="statSubscribers">-</div></div>
+        </div>
+
+        <div class="section">
+            <h2>📋 Recent Distributor Applications</h2>
+            <button class="refresh-btn" onclick="loadDistributors()">Refresh</button>
+            <div id="distributorsTable">
+                <p>Loading...</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📝 Recent Feedback Submissions</h2>
+            <button class="refresh-btn" onclick="loadFeedback()">Refresh</button>
+            <div id="feedbackTable">
+                <p>Loading...</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>💬 Recent Orders</h2>
+            <button class="refresh-btn" onclick="loadOrders()">Refresh</button>
+            <div id="ordersTable">
+                <p>Loading...</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-popup" id="productPopup" aria-hidden="true"></div>
+
+    <script>
+        const productPopup = document.getElementById('productPopup');
+        const productCache = new Map();
+        let popupTimer = null;
+        let popupPointer = null;
+
+        const isLocalFile = window.location.protocol === 'file:';
+        const isLoopbackHost = ['localhost', '127.0.0.1', '::1'].includes(window.location.hostname);
+        const isPrivateNetworkHost = /^(192\.168\.|10\.|172\.(1[6-9]|2\d|3[0-1])\.)/.test(window.location.hostname);
+        const isLocalPreview = isLocalFile || isLoopbackHost || isPrivateNetworkHost;
+        const configuredApiBase = (window.API_BASE_URL || '').trim();
+        const API_BASE = configuredApiBase || ((isLocalPreview && window.location.port !== '3000')
+            ? 'http://localhost:3000'
+            : '');
+
+        function buildApiUrl(path) {
+            return `${API_BASE}${path}`;
+        }
+
+        function getPointerPosition(event) {
+            return {
+                clientX: event.clientX,
+                clientY: event.clientY
+            };
+        }
+
+        function positionProductPopup(pointer) {
+            if (!productPopup || !pointer) return;
+            const offset = 18;
+            const rect = productPopup.getBoundingClientRect();
+            let left = pointer.clientX + offset;
+            let top = pointer.clientY + offset;
+
+            if (left + rect.width > window.innerWidth - 12) {
+                left = pointer.clientX - rect.width - offset;
+            }
+            if (top + rect.height > window.innerHeight - 12) {
+                top = pointer.clientY - rect.height - offset;
+            }
+
+            productPopup.style.left = `${Math.max(12, left)}px`;
+            productPopup.style.top = `${Math.max(12, top)}px`;
+        }
+
+        function hideProductPopup() {
+            if (popupTimer) {
+                clearTimeout(popupTimer);
+                popupTimer = null;
+            }
+            productPopup.classList.remove('show');
+            productPopup.setAttribute('aria-hidden', 'true');
+        }
+
+        function showProductPopup(product, pointer) {
+            const imageMarkup = product.image
+                ? `<img src="${product.image}" alt="${product.name}">`
+                : `<div class="product-popup-fallback">🌿</div>`;
+
+            productPopup.innerHTML = `
+                <div class="product-popup-top">
+                    <div class="product-popup-image">${imageMarkup}</div>
+                    <div>
+                        <span class="product-popup-badge">Product Preview</span>
+                        <div class="product-popup-title">${product.name}</div>
+                        <div class="product-popup-price">&#8377;${product.price ?? 0}${product.old_price ? `<span class="product-popup-old-price">&#8377;${product.old_price}</span>` : ''}</div>
+                    </div>
+                </div>
+                <div class="product-popup-body">
+                    <div class="product-popup-grid">
+                        <div class="product-popup-stat">
+                            <span class="product-popup-label">Product ID</span>
+                            <span class="product-popup-value">${product.id}</span>
+                        </div>
+                        <div class="product-popup-stat">
+                            <span class="product-popup-label">Category</span>
+                            <span class="product-popup-value">${product.category || 'N/A'}</span>
+                        </div>
+                        <div class="product-popup-stat">
+                            <span class="product-popup-label">Discount</span>
+                            <span class="product-popup-value">${product.discount || 0}%</span>
+                        </div>
+                        <div class="product-popup-stat">
+                            <span class="product-popup-label">Stock</span>
+                            <span class="product-popup-value">${product.stock ?? 'N/A'}</span>
+                        </div>
+                    </div>
+                    <div class="product-popup-description">${product.description || 'No description available for this product.'}</div>
+                </div>
+            `;
+
+            productPopup.classList.add('show');
+            productPopup.setAttribute('aria-hidden', 'false');
+            positionProductPopup(pointer);
+        }
+
+        async function getProductById(productId) {
+            if (productCache.has(productId)) {
+                return productCache.get(productId);
+            }
+
+            const response = await fetch(buildApiUrl(`/api/products/${productId}`));
+            if (!response.ok) {
+                throw new Error('Product not found');
+            }
+
+            const product = await response.json();
+            productCache.set(productId, product);
+            return product;
+        }
+
+        function bindProductHoverEvents() {
+            document.querySelectorAll('.product-hover-trigger').forEach(trigger => {
+                trigger.addEventListener('mouseenter', (event) => {
+                    popupPointer = getPointerPosition(event);
+
+                    if (popupTimer) {
+                        clearTimeout(popupTimer);
+                    }
+
+                    popupTimer = setTimeout(async () => {
+                        try {
+                            const product = await getProductById(trigger.dataset.productId);
+                            showProductPopup(product, popupPointer);
+                        } catch (error) {
+                            console.error('Error loading product preview:', error);
+                        } finally {
+                            popupTimer = null;
+                        }
+                    }, 500);
+                });
+
+                trigger.addEventListener('mousemove', (event) => {
+                    popupPointer = getPointerPosition(event);
+                    if (productPopup.classList.contains('show')) {
+                        positionProductPopup(popupPointer);
+                    }
+                });
+
+                trigger.addEventListener('mouseleave', hideProductPopup);
+
+                trigger.addEventListener('click', async (event) => {
+                    popupPointer = getPointerPosition(event);
+                    hideProductPopup();
+                    try {
+                        const product = await getProductById(trigger.dataset.productId);
+                        showProductPopup(product, popupPointer);
+                    } catch (error) {
+                        console.error('Error loading product preview:', error);
+                    }
+                });
+            });
+        }
+
+        async function loadStats() {
+            try {
+                const response = await fetch(buildApiUrl('/api/admin/stats'));
+                const stats = await response.json();
+                document.getElementById('statDistributors').textContent = stats.distributors || 0;
+                document.getElementById('statPendingFeedback').textContent = stats.pending_feedback || 0;
+                document.getElementById('statOrders').textContent = stats.orders || 0;
+                document.getElementById('statSubscribers').textContent = stats.subscribers || 0;
+            } catch (error) {
+                console.error('Error loading stats:', error);
+            }
+        }
+
+        async function loadDistributors() {
+            try {
+                const response = await fetch(buildApiUrl('/api/distributors'));
+                const distributors = await response.json();
+                if (!response.ok) throw new Error('Failed to load distributors');
+                if (!Array.isArray(distributors) || distributors.length === 0) {
+                    document.getElementById('distributorsTable').innerHTML = '<p>No distributors found</p>';
+                    return;
+                }
+
+                const tableHtml = `
+                    <table>
+                        <thead>
+                            <tr><th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>City</th><th>Status</th><th>Date</th></tr>
+                        </thead>
+                        <tbody>
+                            ${distributors.map(d => `
+                                <tr>
+                                    <td>${d.id}</td>
+                                    <td>${d.full_name}</td>
+                                    <td>${d.email}</td>
+                                    <td>${d.phone}</td>
+                                    <td>${d.city || '-'}</td>
+                                    <td><span class="status-pending">${d.status}</span></td>
+                                    <td>${new Date(d.created_at).toLocaleDateString()}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+                document.getElementById('distributorsTable').innerHTML = tableHtml;
+            } catch (error) {
+                document.getElementById('distributorsTable').innerHTML = '<p>Error loading data</p>';
+            }
+        }
+
+        async function loadFeedback() {
+            try {
+                const response = await fetch(buildApiUrl('/api/admin/feedback'));
+                const feedbackRows = await response.json();
+                if (!response.ok) throw new Error('Failed to load feedback');
+                if (!Array.isArray(feedbackRows) || feedbackRows.length === 0) {
+                    document.getElementById('feedbackTable').innerHTML = '<p>No feedback found</p>';
+                    return;
+                }
+
+                const tableHtml = `
+                    <table>
+                        <thead>
+                            <tr><th>ID</th><th>Name</th><th>Rating</th><th>Message</th><th>Status</th><th>Date</th></tr>
+                        </thead>
+                        <tbody>
+                            ${feedbackRows.map(f => `
+                                <tr>
+                                    <td>${f.id}</td>
+                                    <td>${f.name}</td>
+                                    <td>${'★'.repeat(Number(f.rating) || 0)}</td>
+                                    <td>${f.message}</td>
+                                    <td><span class="status-pending">${f.is_approved ? 'approved' : 'pending'}</span></td>
+                                    <td>${new Date(f.created_at).toLocaleDateString()}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+                document.getElementById('feedbackTable').innerHTML = tableHtml;
+            } catch (error) {
+                document.getElementById('feedbackTable').innerHTML = '<p>Error loading data</p>';
+            }
+        }
+
+        async function loadOrders() {
+            try {
+                const response = await fetch(buildApiUrl('/api/orders'));
+                const orders = await response.json();
+                if (!response.ok) throw new Error('Failed to load orders');
+                if (!Array.isArray(orders) || orders.length === 0) {
+                    document.getElementById('ordersTable').innerHTML = '<p>No orders found</p>';
+                    return;
+                }
+
+                const tableHtml = `
+                    <table>
+                        <thead>
+                            <tr><th>ID</th><th>Customer</th><th>Product ID</th><th>Qty</th><th>Total</th><th>Status</th><th>Date</th></tr>
+                        </thead>
+                        <tbody>
+                            ${orders.map(o => `
+                                <tr>
+                                    <td>${o.id}</td>
+                                    <td>${o.customer_name}</td>
+                                    <td><span class="product-hover-trigger" data-product-id="${o.product_id}">#${o.product_id}</span></td>
+                                    <td>${o.quantity}</td>
+                                    <td>₹${o.total_amount}</td>
+                                    <td><span class="status-pending">${o.status}</span></td>
+                                    <td>${new Date(o.order_date).toLocaleDateString()}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+                document.getElementById('ordersTable').innerHTML = tableHtml;
+                bindProductHoverEvents();
+            } catch (error) {
+                document.getElementById('ordersTable').innerHTML = '<p>Error loading data</p>';
+            }
+        }
+
+        loadStats();
+        loadDistributors();
+        loadFeedback();
+        loadOrders();
+    </script>
+</body>
+</html>
